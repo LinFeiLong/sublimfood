@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct IngredientsListView: View {
+    
+    @State var searchText = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                EmptyView()
+            }
+            .navigationTitle("Mes ingrédients")
+        }
+        .searchable(text: $searchText, prompt: "Ingrédient")
     }
 }
 

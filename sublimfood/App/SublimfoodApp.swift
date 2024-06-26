@@ -15,7 +15,7 @@ struct SublimfoodApp: App {
     var body: some Scene {
         WindowGroup {
             TabView(selection: $selectedTab) {
-                    EmptyView()
+                    IngredientsListView()
                     .tabItem { Label("Ingrédients", systemImage: "refrigerator")
                     }
                     .tag("Ingrédients")
