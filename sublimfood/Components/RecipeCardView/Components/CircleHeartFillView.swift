@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct CircleHeartFillView: View {
-    var heartSize: Double = 20
-    var circleSize: Double = 40
-    var isHeartFilled: Bool = false
+    var isHeartFilled: Bool
     
     var heartIcon: String { isHeartFilled ? "heart.fill" : "heart"
     }
@@ -31,5 +29,5 @@ struct CircleHeartFillView: View {
 }
 
 #Preview {
-    CircleHeartFillView()
+    CircleHeartFillView(isHeartFilled: false)
 }

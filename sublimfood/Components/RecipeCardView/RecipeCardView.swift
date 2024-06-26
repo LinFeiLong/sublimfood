@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RecipeCardView: View {
-    var image: String = "boulettes_pdt"
-    var title: String = "Boulettes de Pommes de Terre"
-    var displayCircleHeart: Bool = false
+    var image: String
+    var title: String
+    var displayCircleHeart: Bool
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -44,5 +44,5 @@ struct RecipeCardView: View {
 }
 
 #Preview {
-    RecipeCardView()
+    RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: false)
 }
