@@ -17,12 +17,12 @@ struct CircleHeartFillView: View {
         ZStack {
             Circle()
                 .fill(Color.white)
-                .frame(width: circleSize, height: circleSize)
+                .frame(width: 40, height: 40)
             
             Image(systemName: heartIcon)
                 .resizable()
                 .foregroundStyle(.red)
-                .frame(width: heartSize, height: heartSize)
+                .frame(width: 20, height: 20)
         }
         .padding(25)
     }
