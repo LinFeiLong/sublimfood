@@ -79,6 +79,7 @@
 		02BC5D3C2C2C2F130002CD98 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A549A7302C2C49F700DF1E58 /* RecipeCardView */,
 				02BC5D3A2C2C2EFA0002CD98 /* TitleView.swift */,
 			);
 			path = Components;
@@ -106,6 +107,23 @@
 				F51F73672C2C39A000B9D30B /* RecipeModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A549A7302C2C49F700DF1E58 /* RecipeCardView */ = {
+			isa = PBXGroup;
+			children = (
+				A549A7312C2C4A0C00DF1E58 /* Components */,
+				A549A72E2C2C3A6D00DF1E58 /* RecipeCardView.swift */,
+			);
+			path = RecipeCardView;
+			sourceTree = "<group>";
+		};
+		A549A7312C2C4A0C00DF1E58 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A549A7322C2C4A4300DF1E58 /* CircleHeartFillView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,11 +196,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A549A72F2C2C3A6D00DF1E58 /* RecipeCardView.swift in Sources */,
 				02A1B0BE2C2C032F001045BB /* ContentView.swift in Sources */,
 				F51F736A2C2C3C7500B9D30B /* IngredientsListView.swift in Sources */,
 				F51F73682C2C39A000B9D30B /* RecipeModel.swift in Sources */,
 				02A1B0BC2C2C032F001045BB /* SublimfoodApp.swift in Sources */,
 				02BC5D3B2C2C2EFA0002CD98 /* TitleView.swift in Sources */,
+				A549A7332C2C4A4300DF1E58 /* CircleHeartFillView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
