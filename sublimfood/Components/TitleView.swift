@@ -57,13 +57,3 @@ struct CategoryView: View {
         .shadow(radius: 5)
     }
 }
-
-@main
-struct MyApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-    
-}

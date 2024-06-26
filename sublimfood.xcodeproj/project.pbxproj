@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		02A1B0BC2C2C032F001045BB /* SublimfoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B0BB2C2C032F001045BB /* SublimfoodApp.swift */; };
-		02A1B0BE2C2C032F001045BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B0BD2C2C032F001045BB /* ContentView.swift */; };
 		02A1B0C02C2C0331001045BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A1B0BF2C2C0331001045BB /* Assets.xcassets */; };
 		02A1B0C32C2C0331001045BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A1B0C22C2C0331001045BB /* Preview Assets.xcassets */; };
 		02BC5D3B2C2C2EFA0002CD98 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC5D3A2C2C2EFA0002CD98 /* TitleView.swift */; };
 		02BC5D3F2C2C3DB90002CD98 /* IngredientButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC5D3E2C2C3DB90002CD98 /* IngredientButtonView.swift */; };
+		02BC5D412C2C58390002CD98 /* RecipeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC5D402C2C58390002CD98 /* RecipeCardView.swift */; };
+		02BC5D432C2C58490002CD98 /* CircleHeartFillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC5D422C2C58490002CD98 /* CircleHeartFillView.swift */; };
+		02BC5D462C2C587E0002CD98 /* SharemyFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC5D442C2C587E0002CD98 /* SharemyFavoriteView.swift */; };
+		02BC5D472C2C587E0002CD98 /* BtnShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC5D452C2C587E0002CD98 /* BtnShareView.swift */; };
 		F51F73682C2C39A000B9D30B /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F73672C2C39A000B9D30B /* RecipeModel.swift */; };
 		F51F736A2C2C3C7500B9D30B /* IngredientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F73692C2C3C7500B9D30B /* IngredientsListView.swift */; };
 /* End PBXBuildFile section */
@@ -20,13 +23,16 @@
 /* Begin PBXFileReference section */
 		02A1B0B82C2C032F001045BB /* sublimfood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sublimfood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A1B0BB2C2C032F001045BB /* SublimfoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublimfoodApp.swift; sourceTree = "<group>"; };
-		02A1B0BD2C2C032F001045BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		02A1B0BF2C2C0331001045BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02A1B0C22C2C0331001045BB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		02BC5D3A2C2C2EFA0002CD98 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		02BC5D3E2C2C3DB90002CD98 /* IngredientButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientButtonView.swift; sourceTree = "<group>"; };
+		02BC5D402C2C58390002CD98 /* RecipeCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCardView.swift; sourceTree = "<group>"; };
+		02BC5D422C2C58490002CD98 /* CircleHeartFillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleHeartFillView.swift; sourceTree = "<group>"; };
+		02BC5D442C2C587E0002CD98 /* SharemyFavoriteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharemyFavoriteView.swift; sourceTree = "<group>"; };
+		02BC5D452C2C587E0002CD98 /* BtnShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BtnShareView.swift; sourceTree = "<group>"; };
 		F51F73672C2C39A000B9D30B /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
-		F51F73692C2C3C7500B9D30B /* IngredientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IngredientsListView.swift; path = sublimfood/Model/IngredientsListView.swift; sourceTree = SOURCE_ROOT; };
+		F51F73692C2C3C7500B9D30B /* IngredientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IngredientsListView.swift; path = sublimfood/Views/IngredientsListView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +67,8 @@
 			children = (
 				F51F73652C2C374C00B9D30B /* App */,
 				F51F73662C2C395300B9D30B /* Model */,
-				02BC5D3D2C2C2F270002CD98 /* Views */,
+				02BC5D4A2C2C5A2E0002CD98 /* Views */,
 				02BC5D3C2C2C2F130002CD98 /* Components */,
-				02A1B0BD2C2C032F001045BB /* ContentView.swift */,
 				02A1B0BF2C2C0331001045BB /* Assets.xcassets */,
 				02A1B0C12C2C0331001045BB /* Preview Content */,
 			);
@@ -81,6 +86,8 @@
 		02BC5D3C2C2C2F130002CD98 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				02BC5D452C2C587E0002CD98 /* BtnShareView.swift */,
+				02BC5D442C2C587E0002CD98 /* SharemyFavoriteView.swift */,
 				A549A7302C2C49F700DF1E58 /* RecipeCardView */,
 				02BC5D3A2C2C2EFA0002CD98 /* TitleView.swift */,
 				02BC5D3E2C2C3DB90002CD98 /* IngredientButtonView.swift */,
@@ -88,12 +95,29 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		02BC5D3D2C2C2F270002CD98 /* Views */ = {
+		02BC5D4A2C2C5A2E0002CD98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				F51F73692C2C3C7500B9D30B /* IngredientsListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A549A7302C2C49F700DF1E58 /* RecipeCardView */ = {
+			isa = PBXGroup;
+			children = (
+				02BC5D402C2C58390002CD98 /* RecipeCardView.swift */,
+				A549A7312C2C4A0C00DF1E58 /* Components */,
+			);
+			path = RecipeCardView;
+			sourceTree = "<group>";
+		};
+		A549A7312C2C4A0C00DF1E58 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				02BC5D422C2C58490002CD98 /* CircleHeartFillView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		F51F73652C2C374C00B9D30B /* App */ = {
@@ -110,23 +134,6 @@
 				F51F73672C2C39A000B9D30B /* RecipeModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		A549A7302C2C49F700DF1E58 /* RecipeCardView */ = {
-			isa = PBXGroup;
-			children = (
-				A549A7312C2C4A0C00DF1E58 /* Components */,
-				A549A72E2C2C3A6D00DF1E58 /* RecipeCardView.swift */,
-			);
-			path = RecipeCardView;
-			sourceTree = "<group>";
-		};
-		A549A7312C2C4A0C00DF1E58 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				A549A7322C2C4A4300DF1E58 /* CircleHeartFillView.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,14 +206,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A549A72F2C2C3A6D00DF1E58 /* RecipeCardView.swift in Sources */,
-				02A1B0BE2C2C032F001045BB /* ContentView.swift in Sources */,
+				02BC5D412C2C58390002CD98 /* RecipeCardView.swift in Sources */,
 				02BC5D3F2C2C3DB90002CD98 /* IngredientButtonView.swift in Sources */,
 				F51F736A2C2C3C7500B9D30B /* IngredientsListView.swift in Sources */,
+				02BC5D432C2C58490002CD98 /* CircleHeartFillView.swift in Sources */,
+				02BC5D472C2C587E0002CD98 /* BtnShareView.swift in Sources */,
 				F51F73682C2C39A000B9D30B /* RecipeModel.swift in Sources */,
 				02A1B0BC2C2C032F001045BB /* SublimfoodApp.swift in Sources */,
+				02BC5D462C2C587E0002CD98 /* SharemyFavoriteView.swift in Sources */,
 				02BC5D3B2C2C2EFA0002CD98 /* TitleView.swift in Sources */,
-				A549A7332C2C4A4300DF1E58 /* CircleHeartFillView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
