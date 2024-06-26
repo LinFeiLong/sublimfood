@@ -11,6 +11,7 @@
 		02A1B0BE2C2C032F001045BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B0BD2C2C032F001045BB /* ContentView.swift */; };
 		02A1B0C02C2C0331001045BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A1B0BF2C2C0331001045BB /* Assets.xcassets */; };
 		02A1B0C32C2C0331001045BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A1B0C22C2C0331001045BB /* Preview Assets.xcassets */; };
+		02BC5D3B2C2C2EFA0002CD98 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC5D3A2C2C2EFA0002CD98 /* TitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		02A1B0BD2C2C032F001045BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		02A1B0BF2C2C0331001045BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02A1B0C22C2C0331001045BB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		02BC5D3A2C2C2EFA0002CD98 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,8 @@
 		02A1B0BA2C2C032F001045BB /* sublimfood */ = {
 			isa = PBXGroup;
 			children = (
+				02BC5D3D2C2C2F270002CD98 /* Pages */,
+				02BC5D3C2C2C2F130002CD98 /* Components */,
 				02A1B0BB2C2C032F001045BB /* sublimfoodApp.swift */,
 				02A1B0BD2C2C032F001045BB /* ContentView.swift */,
 				02A1B0BF2C2C0331001045BB /* Assets.xcassets */,
@@ -65,6 +69,21 @@
 				02A1B0C22C2C0331001045BB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		02BC5D3C2C2C2F130002CD98 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				02BC5D3A2C2C2EFA0002CD98 /* TitleView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		02BC5D3D2C2C2F270002CD98 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +158,7 @@
 			files = (
 				02A1B0BE2C2C032F001045BB /* ContentView.swift in Sources */,
 				02A1B0BC2C2C032F001045BB /* sublimfoodApp.swift in Sources */,
+				02BC5D3B2C2C2EFA0002CD98 /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
