@@ -8,10 +8,26 @@
 import SwiftUI
 
 @main
-struct sublimfoodApp: App {
+struct SublimfoodApp: App {
+    
+    @State var selectedTab = "Ingrédients"
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView(selection: $selectedTab) {
+                    EmptyView()
+                    .tabItem { Label("Ingrédients", systemImage: "refrigerator")
+                    }
+                    .tag("Ingrédients")
+                    EmptyView()
+                    .tabItem { Label("Astuces", systemImage: "lightbulb.max")
+                    }
+                    .tag("Astuces")
+                    EmptyView()
+                    .tabItem { Label("Favoris", systemImage: "heart")
+                    }
+                    .tag("Favoris")
+                }
         }
     }
 }
