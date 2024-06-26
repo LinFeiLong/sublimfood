@@ -11,6 +11,7 @@ struct RecipeCardView: View {
     var image: String
     var title: String
     var displayCircleHeart: Bool
+    var isHeartFilled: Bool
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -36,7 +37,7 @@ struct RecipeCardView: View {
             .padding()
             .shadow(radius: 5)
             
-            if displayCircleHeart { CircleHeartFillView(isHeartFilled: true)
+            if displayCircleHeart { CircleHeartFillView(isHeartFilled: isHeartFilled)
             }
             
         }
@@ -44,5 +45,5 @@ struct RecipeCardView: View {
 }
 
 #Preview {
-    RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: false)
+    RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: true, isHeartFilled: true)
 }
