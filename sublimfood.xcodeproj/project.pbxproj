@@ -16,6 +16,7 @@
 		02BC5D432C2C58490002CD98 /* CircleHeartFillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC5D422C2C58490002CD98 /* CircleHeartFillView.swift */; };
 		A549A7352C2D559700DF1E58 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549A7342C2D559700DF1E58 /* ArticleView.swift */; };
 		A549A7372C2D654300DF1E58 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549A7362C2D654300DF1E58 /* ArticleModel.swift */; };
+		A54EE6DE2C2D94FE003866FE /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54EE6DD2C2D94FE003866FE /* RecipeDetailView.swift */; };
 		C3A7283D2C2D54CC009A7080 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A7283C2C2D54CC009A7080 /* ButtonView.swift */; };
 		F5173F7D2C2D84BD004C96FD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5173F7C2C2D84BD004C96FD /* MainTabView.swift */; };
 		F5173F7F2C2D9382004C96FD /* IngredientBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5173F7E2C2D9382004C96FD /* IngredientBtnView.swift */; };
@@ -37,6 +38,7 @@
 		02BC5D422C2C58490002CD98 /* CircleHeartFillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleHeartFillView.swift; sourceTree = "<group>"; };
 		A549A7342C2D559700DF1E58 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		A549A7362C2D654300DF1E58 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		A54EE6DD2C2D94FE003866FE /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		C3A7283C2C2D54CC009A7080 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		F5173F7C2C2D84BD004C96FD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		F5173F7E2C2D9382004C96FD /* IngredientBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientBtnView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				A549A7342C2D559700DF1E58 /* ArticleView.swift */,
 				F51F736B2C2D51EF00B9D30B /* ArticlesListView.swift */,
 				F51F736D2C2D524900B9D30B /* FavoritesListView.swift */,
+				A54EE6DD2C2D94FE003866FE /* RecipeDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				F5173F822C2DA2C9004C96FD /* Array++Chunked.swift in Sources */,
 				F5173F7F2C2D9382004C96FD /* IngredientBtnView.swift in Sources */,
 				F51F73682C2C39A000B9D30B /* RecipeModel.swift in Sources */,
+				A54EE6DE2C2D94FE003866FE /* RecipeDetailView.swift in Sources */,
 				F51F736E2C2D524900B9D30B /* FavoritesListView.swift in Sources */,
 				02A1B0BC2C2C032F001045BB /* SublimfoodApp.swift in Sources */,
 				A549A7352C2D559700DF1E58 /* ArticleView.swift in Sources */,
