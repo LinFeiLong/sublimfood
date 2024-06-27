@@ -7,51 +7,103 @@
 
 import SwiftUI
 
+enum Variant {
+    case initial
+    case add
+    case to
+}
+
 struct IngredientButtonView: View {
     var action: () -> Void
     var imageName: String
     var label: String
+    var variant: Variant?
+    
+    let btnWidth: CGFloat = 184
+    let btnHeight: CGFloat = 56
+    let circleSize: CGFloat = 40
+    let circleOffsetX: CGFloat = 20
     
     var body: some View {
-        Button(
-            action: action,
-            label: {
-                HStack {
-                    Image(imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40) // Adjust the size as needed
-                        .padding(.leading, 10)
-                    Text(label)
-                        .foregroundColor(.black)
-                        .multilineTextAlignment(.leading)
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.gray)
-                        .padding(.trailing, 10)
+        ZStack(alignment: .topTrailing) {
+            Button(
+                action: action,
+                label: {
                     ZStack {
-                        Circle()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.orange)
-                            .opacity(0.2)
-                        Image(systemName: "plus")
-                            .foregroundColor(.orange)
+                        if (variant == .add) { // Shadow of the circle
+                            HStack {
+                                Spacer()
+                                ZStack {
+                                    Circle()
+                                        .frame(width: circleSize, height: circleSize)
+                                        .foregroundColor(.white)
+                                        .shadow(radius: 5)
+                                }.offset(x: circleOffsetX)
+                            }
+                            .frame(width: btnWidth, height: btnHeight)
+                            .background(.clear)
+                        }
+                        
+                        HStack {
+                            Image(imageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: circleSize, height: circleSize)
+                                .padding(.leading, 10)
+                            Text(label)
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.leading)
+                            Spacer()
                             
-                    }.padding(.leading, 10)
+                            
+                        }
+                        .frame(width: btnWidth, height: btnHeight)
+                        .background(.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                        
+                        if (variant == .to) {
+                            HStack {
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 10)
+                            }
+                            .frame(width: btnWidth, height: btnHeight)
+                            .background(.clear)
+                        }
+                        
+                        if (variant == .add) {
+                            HStack {
+                                Spacer()
+                                ZStack {
+                                    Circle()
+                                        .frame(width: circleSize, height: circleSize)
+                                        .foregroundColor(.white)
+                                    Circle()
+                                        .frame(width: circleSize, height: circleSize)
+                                        .foregroundColor(.orange)
+                                        .opacity(0.2)
+                                    Image(systemName: "plus")
+                                        .foregroundColor(.orange)
+                                }.offset(x: circleOffsetX)
+                            }
+                            .frame(width: btnWidth, height: btnHeight)
+                            .background(.clear)
+                        }
+                    }
                 }
-                .frame(width: 184, height: 56)
-                .background(
-                    RoundedRectangle(cornerSize: CGSize(width: 16, height: 16))
-                        .fill(Color.white)
-                )
-            }
-        )
+                
+            ).padding()
+        }
     }
 }
 
+
 #Preview {
-    ZStack {
-        Color.gray.edgesIgnoringSafeArea(.all) // Background screen color
+    VStack {
         IngredientButtonView(action: {}, imageName: "tomato", label: "Tomate")
+        IngredientButtonView(action: {}, imageName: "tomato", label: "Tomate",  variant: .add)
+        IngredientButtonView(action: {}, imageName: "tomato", label: "Tomate",  variant: .to)
     }
 }

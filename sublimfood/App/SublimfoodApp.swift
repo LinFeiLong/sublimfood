@@ -19,15 +19,16 @@ struct SublimfoodApp: App {
                     .tabItem { Label("Ingrédients", systemImage: "refrigerator")
                     }
                     .tag("Ingrédients")
-                    EmptyView()
+                    ArticlesListView()
                     .tabItem { Label("Astuces", systemImage: "lightbulb.max")
                     }
                     .tag("Astuces")
-                    EmptyView()
+                    FavoritesListView()
                     .tabItem { Label("Favoris", systemImage: "heart")
                     }
                     .tag("Favoris")
                 }
+            .accentColor(.orange) // DEPRECATED IN FUTUR iOS 
         }
     }
 }
