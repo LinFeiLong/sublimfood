@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleView: View {
     var article: ArticleModel
-    var OtherArticles: [ArticleModel]
+    var otherArticles: [ArticleModel]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -38,7 +38,7 @@ struct ArticleView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(OtherArticles) {article in
+                            ForEach(otherArticles) {article in
                                 RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
                             }
                         }
@@ -55,14 +55,16 @@ var caption: String = "Neque porro quisquam est qui dolorem ipsum quia dolor si 
 
 var title: String = "Boulettes de Pommes de Terre"
 
+var image: String = "boulettes_pdt"
+
 var content: String = "Neque porro quisquam est qui dolorem ipsum quia dolor si amet, consectetur, adipisci velit Neque porro quisquam est qui dolorem ipsum quia dolor si amet, consectetur, adipisci velit"
 
 var articles: [ArticleModel] = [
-    ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt", caption: caption, content: content ),
-    ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt", caption: "", content: ""),
-    ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt")
+    ArticleModel(title: title, image: image, caption: caption, content: content ),
+    ArticleModel(title: title, image: image, caption: "", content: ""),
+    ArticleModel(title: title, image: image)
 ]
 
 #Preview {
-    ArticleView(article: articles[0], OtherArticles: articles)
+    ArticleView(article: articles[0], otherArticles: articles)
 }
