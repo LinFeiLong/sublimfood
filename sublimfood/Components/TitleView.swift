@@ -12,13 +12,14 @@ struct TitleView: View {
     var color:Color
     
     var body: some View {
-        VStack(alignment: .leading){
+        ZStack(alignment: .leading){
             Text(title)
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .fontWeight(.black)
             Rectangle()
                 .fill(color)
                 .frame(width:20,height:5)
+                .offset(y: 15)
         }
     }
 }
