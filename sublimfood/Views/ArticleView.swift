@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ArticleView: View {
-    var caption: String
-    var title: String
-    var content: String
-    var articles: [ArticleModel]
+    var article: ArticleModel
+    var OtherArticles: [ArticleModel]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -19,19 +17,19 @@ struct ArticleView: View {
                 Image("boulettes_pdt")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: 250)
+                    .frame(height: 300)
                 
                 VStack(alignment: .leading) {
-                    Text(caption)
+                    Text(article.caption)
                         .font(.caption)
                         .padding(.vertical, 10)
                     
-                    Text(title)
+                    Text(article.title)
                         .font(.title2)
                         .bold()
                         .padding(.bottom, 10)
                     
-                    Text(content)
+                    Text(article.content)
                     
                     Text("Autres astuces")
                         .font(.title2)
@@ -40,15 +38,16 @@ struct ArticleView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(articles) {article in
+                            ForEach(OtherArticles) {article in
                                 RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
                             }
                         }
                     }
                 }
-                .padding()
+                .padding(25)
             }
         }
+        .ignoresSafeArea()
     }
 }
 
@@ -59,10 +58,11 @@ var title: String = "Boulettes de Pommes de Terre"
 var content: String = "Neque porro quisquam est qui dolorem ipsum quia dolor si amet, consectetur, adipisci velit Neque porro quisquam est qui dolorem ipsum quia dolor si amet, consectetur, adipisci velit"
 
 var articles: [ArticleModel] = [
-    ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt"),
-    ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt", caption: "", content: ""), ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt")
+    ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt", caption: caption, content: content ),
+    ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt", caption: "", content: ""),
+    ArticleModel(title: "Boulettes de Pommes de Terre", image: "boulettes_pdt")
 ]
 
 #Preview {
-    ArticleView(caption: caption, title: title, content: content, articles: articles)
+    ArticleView(article: articles[0], OtherArticles: articles)
 }
