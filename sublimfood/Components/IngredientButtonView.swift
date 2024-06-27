@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum Variant {
+    case initial
     case add
     case to
 }
@@ -16,7 +17,7 @@ struct IngredientButtonView: View {
     var action: () -> Void
     var imageName: String
     var label: String
-    var variant: Variant
+    var variant: Variant?
     
     let btnWidth: CGFloat = 184
     let btnHeight: CGFloat = 56
@@ -101,6 +102,7 @@ struct IngredientButtonView: View {
 
 #Preview {
     VStack {
+        IngredientButtonView(action: {}, imageName: "tomato", label: "Tomate")
         IngredientButtonView(action: {}, imageName: "tomato", label: "Tomate",  variant: .add)
         IngredientButtonView(action: {}, imageName: "tomato", label: "Tomate",  variant: .to)
     }
