@@ -27,11 +27,13 @@ struct IngredientsListView: View {
                     NavigationLink {
                         Text(ingredient)
                     } label: {
-                        IngredientButtonView(action: {
-                            //
-                        }, imageName: "tomato", label: ingredient, variant: displayResult ? .add : .to)
+                        IngredientBtnView(label: ingredient,
+                                          image: "tomato",
+                                          action: true,
+                                          typeOfAction: displayResult ? .add : .navigate)
                     }
                 }
+                .buttonStyle(.plain)
                 Spacer()
             }
             .navigationTitle("Mes ingrédients")
