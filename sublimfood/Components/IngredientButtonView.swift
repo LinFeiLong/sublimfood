@@ -30,7 +30,7 @@ struct IngredientButtonView: View {
                 action: action,
                 label: {
                     ZStack {
-                        if (variant == .to) { // Shadow of the circle
+                        if (variant == .add) { // Shadow of the circle
                             HStack {
                                 Spacer()
                                 ZStack {
@@ -62,7 +62,7 @@ struct IngredientButtonView: View {
                         .cornerRadius(10)
                         .shadow(radius: 5)
                         
-                        if (variant == .add) {
+                        if (variant == .to) {
                             HStack {
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -73,7 +73,7 @@ struct IngredientButtonView: View {
                             .background(.clear)
                         }
                         
-                        if (variant == .to) {
+                        if (variant == .add) {
                             HStack {
                                 Spacer()
                                 ZStack {
