@@ -14,7 +14,7 @@ struct ArticleView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                Image("boulettes_pdt")
+                Image(article.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 300)
@@ -51,20 +51,6 @@ struct ArticleView: View {
     }
 }
 
-var caption: String = "Neque porro quisquam est qui dolorem ipsum quia dolor si amet, consectetur, adipisci velit"
-
-var title: String = "Boulettes de Pommes de Terre"
-
-var image: String = "boulettes_pdt"
-
-var content: String = "Neque porro quisquam est qui dolorem ipsum quia dolor si amet, consectetur, adipisci velit Neque porro quisquam est qui dolorem ipsum quia dolor si amet, consectetur, adipisci velit"
-
-var articles: [ArticleModel] = [
-    ArticleModel(title: title, image: image, caption: caption, content: content ),
-    ArticleModel(title: title, image: image, caption: "", content: ""),
-    ArticleModel(title: title, image: image)
-]
-
 #Preview {
-    ArticleView(article: articles[0], otherArticles: articles)
+    ArticleView(article: articlesModel[0], otherArticles: articlesModel)
 }
