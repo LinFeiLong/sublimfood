@@ -24,9 +24,13 @@ struct IngredientsListView: View {
         NavigationStack {
             VStack {
                 ForEach(displayResult ? results : ingredients, id: \.self) { ingredient in
-                    IngredientButtonView(action: {
-                        //
-                    }, imageName: "tomato", label: ingredient, variant: displayResult ? .add : .to)
+                    NavigationLink {
+                        Text(ingredient)
+                    } label: {
+                        IngredientButtonView(action: {
+                            //
+                        }, imageName: "tomato", label: ingredient, variant: displayResult ? .add : .to)
+                    }
                 }
                 Spacer()
             }
