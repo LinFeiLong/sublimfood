@@ -54,12 +54,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02173AEE2C2D6FA60017628A /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		02A1B0AF2C2C032F001045BB = {
 			isa = PBXGroup;
 			children = (
 				02A1B0BA2C2C032F001045BB /* sublimfood */,
 				02A1B0B92C2C032F001045BB /* Products */,
-				F5173F7B2C2D8495004C96FD /* Recovered References */,
+				02173AEE2C2D6FA60017628A /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
