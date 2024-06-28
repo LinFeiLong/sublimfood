@@ -30,28 +30,31 @@ struct IngredientsListView: View {
     var body: some View {
         NavigationStack {
             LazyVGrid(columns: columns, spacing: 20)  {
-//                if savedIngredients.isEmpty {
-//                        Text("Commencez à ajouter des ingredients avec la barre de recherche")
-//                            .font(.largeTitle)
-//                            .multilineTextAlignment(.center)
-//                }
+                //                if savedIngredients.isEmpty {
+                //                        Text("Commencez à ajouter des ingredients avec la barre de recherche")
+                //                            .font(.largeTitle)
+                //                            .multilineTextAlignment(.center)
+                //                }
                 if displayResult {
                     ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
-                        IngredientButtonView(action: {
-                            addIngredient(ingredient)
-                        }, imageName: "tomato", label: ingredient, variant: .add)
+                        IngredientButtonView(action: { addIngredient(ingredient) },
+                                             imageName: "tomato",
+                                             label: ingredient,
+                                             variant: .add)
                     }
                 } else {
                     ForEach(savedIngredients, id: \.self) { ingredient in
-                        NavigationLink {
-                            Text(ingredient)
-                        } label: {
-                            IngredientBtnView(label: ingredient,
-                                              image: "tomato",
-                                              action: true,
-                                              typeOfAction: displayResult ? .add : .navigate)
+                        VStack {
+                            NavigationLink {
+                                Text(ingredient)
+                            } label: {
+                                IngredientBtnView(label: ingredient,
+                                                  image: "tomato",
+                                                  action: true,
+                                                  typeOfAction: displayResult ? .add : .navigate)
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -97,6 +100,7 @@ struct IngredientsListView: View {
     
     private func deleteIngredients(_ ingredient: String) {
         withAnimation {
+            ingredients.append(ingredient)
             savedIngredients.removeAll { $0 == ingredient }
             saveIngredients()
         }
