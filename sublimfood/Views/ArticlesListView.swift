@@ -39,8 +39,6 @@ struct ArticlesListView: View {
                 }
             }
             .navigationTitle("Astuces")
-            .toolbarBackground(Color.orange, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
         }
     }
 }
