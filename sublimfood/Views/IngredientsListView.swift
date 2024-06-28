@@ -10,7 +10,8 @@ import SwiftUI
 struct IngredientsListView: View {
     
     @State var searchText = ""
-    @State var ingredients: [String] = ["Tomate", "Pain", "Orange"]
+    @State var ingredients = Ingredients.all
+    @State private var savedIngredients: [String] = UserDefaults.standard.savedIngredients
     var results: [String] {
         if searchText.isEmpty {
             return ingredients
@@ -20,25 +21,53 @@ struct IngredientsListView: View {
     }
     @State var displayResult = false
     
+    let columns = [
+        GridItem(.flexible(), spacing: 0),
+        GridItem(.flexible(), spacing: 0)
+    ]
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                ForEach(displayResult ? results : ingredients, id: \.self) { ingredient in
-                    NavigationLink {
-                        Text(ingredient)
-                    } label: {
-                        IngredientBtnView(label: ingredient,
-                                          image: "tomato",
-                                          action: true,
-                                          typeOfAction: displayResult ? .add : .navigate)
+            LazyVGrid(columns: columns, spacing: 10)  {
+                if displayResult {
+                    ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
+                        Button(action: {
+                            addIngredient(ingredient)
+                        }, label: {
+                            IngredientBtnView(label: ingredient,
+                                              image: "tomato",
+                                              action: true,
+                                              typeOfAction: .add)
+                        })
+                    }
+                } else {
+                    ForEach(savedIngredients, id: \.self) { ingredient in
+                        NavigationLink {
+                            Text(ingredient)
+                        } label: {
+                            IngredientBtnView(label: ingredient,
+                                              image: "tomato",
+                                              action: true,
+                                              typeOfAction: displayResult ? .add : .navigate)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
-                .buttonStyle(.plain)
                 Spacer()
             }
             .navigationTitle("Mes ingrédients")
         }
-        .searchable(text: $searchText, isPresented: $displayResult, prompt: "Ingrédient")
+        .searchable(text: $searchText, isPresented: $displayResult, prompt: "Chercher un ingrédient")
+    }
+    
+    private func addIngredient(_ ingredient: String) {
+        guard !savedIngredients.contains(ingredient) else { return }
+        savedIngredients.append(ingredient)
+        saveIngredients()
+    }
+    
+    private func saveIngredients() {
+        UserDefaults.standard.savedIngredients = savedIngredients
     }
 }
 

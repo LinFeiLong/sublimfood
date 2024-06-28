@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Ingredients {
+    static let all = [
+        "Tomate",
+        "Orange"
+    ]
+}
