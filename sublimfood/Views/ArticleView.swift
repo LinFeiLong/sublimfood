@@ -19,22 +19,25 @@ struct ArticleView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 300)
                 
-                VStack(alignment: .leading) {
-                    Text(article.caption)
-                        .font(.caption)
-                        .padding(.vertical, 10)
-                    
-                    Text(article.title)
-                        .font(.title2)
-                        .bold()
-                        .padding(.bottom, 10)
-                    
-                    Text(article.content)
-                    
-                    Text("Autres astuces")
-                        .font(.title2)
-                        .bold()
-                        .padding(.vertical, 10)
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text(article.caption)
+                            .font(.caption)
+                            .padding(.vertical, 10)
+                        
+                        Text(article.title)
+                            .font(.title2)
+                            .bold()
+                            .padding(.bottom, 10)
+                        
+                        Text(article.content)
+                        
+                        Text("Autres astuces")
+                            .font(.title2)
+                            .bold()
+                            .padding(.vertical, 10)
+                    }
+                    .padding(25)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
@@ -44,7 +47,6 @@ struct ArticleView: View {
                         }
                     }
                 }
-                .padding(25)
             }
         }
         .ignoresSafeArea()
