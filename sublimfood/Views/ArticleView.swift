@@ -12,44 +12,53 @@ struct ArticleView: View {
     var otherArticles: [ArticleModel]
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                Image(article.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 300)
-                
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    VStack(alignment: .leading) {
-                        Text(article.caption)
-                            .font(.caption)
-                            .padding(.vertical, 10)
-                        
-                        Text(article.title)
-                            .font(.title2)
-                            .bold()
-                            .padding(.bottom, 10)
-                        
-                        Text(article.content)
-                        
-                        Text("Autres astuces")
-                            .font(.title2)
-                            .bold()
-                            .padding(.vertical, 10)
-                    }
-                    .padding(25)
+                    Image(article.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 300)
+                        .frame(maxWidth: UIScreen.main.bounds.width)
+                        .clipped()
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(otherArticles) {article in
-                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                    
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text(article.caption)
+                                .font(.caption)
+                                .padding(.vertical, 10)
+                            
+                            Text(article.title)
+                                .font(.title2)
+                                .bold()
+                                .padding(.bottom, 10)
+                            
+                            Text(article.content)
+                            
+                            Text("Autres astuces")
+                                .font(.title2)
+                                .bold()
+                                .padding(.vertical, 10)
+                        }
+                        .padding()
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(Array(otherArticles.enumerated()), id: \.element.id) { index, article in
+                                    NavigationLink {
+                                        ArticleView(article: articlesModel[index], otherArticles: articlesModel)
+                                    } label : {
+                                        RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                                    }
+                                }.navigationTitle("Astuces")
                             }
                         }
                     }
                 }
             }
+            
         }
-        .ignoresSafeArea()
     }
 }
 
