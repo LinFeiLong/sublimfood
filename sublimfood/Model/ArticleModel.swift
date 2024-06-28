@@ -13,13 +13,6 @@ struct ArticleModel: Identifiable {
     let image: String
     let caption: String
     let content: String
-    
-    init(title: String, image: String, caption: String = "", content: String = "") {
-        self.title = title
-        self.image = image
-        self.caption = caption
-        self.content = content
-    }
 }
 
 

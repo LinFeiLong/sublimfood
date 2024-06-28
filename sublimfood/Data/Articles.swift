@@ -17,6 +17,6 @@ var content: String = "Neque porro quisquam est qui dolorem ipsum quia dolor si 
 
 var articlesModel: [ArticleModel] = [
     ArticleModel(title: title, image: image, caption: caption, content: content ),
-    ArticleModel(title: title, image: image, caption: "", content: ""),
-    ArticleModel(title: title, image: image)
+    ArticleModel(title: title, image: image, caption: caption, content: content ),
+    ArticleModel(title: title, image: image, caption: caption, content: content ),
 ]
