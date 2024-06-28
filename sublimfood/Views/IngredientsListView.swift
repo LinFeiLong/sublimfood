@@ -20,6 +20,7 @@ struct IngredientsListView: View {
         }
     }
     @State var displayResult = false
+    @State var sheetIsPresented = false
     
     let columns = [
         GridItem(.flexible(), spacing: 20),
@@ -29,6 +30,11 @@ struct IngredientsListView: View {
     var body: some View {
         NavigationStack {
             LazyVGrid(columns: columns, spacing: 20)  {
+//                if savedIngredients.isEmpty {
+//                        Text("Commencez à ajouter des ingredients avec la barre de recherche")
+//                            .font(.largeTitle)
+//                            .multilineTextAlignment(.center)
+//                }
                 if displayResult {
                     ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
                         IngredientButtonView(action: {
@@ -40,27 +46,60 @@ struct IngredientsListView: View {
                         NavigationLink {
                             Text(ingredient)
                         } label: {
-//                            IngredientButtonView(label: ingredient,
-//                                              image: "tomato",
-//                                              action: true,
-//                                              typeOfAction: displayResult ? .add : .navigate)
+                            IngredientBtnView(label: ingredient,
+                                              image: "tomato",
+                                              action: true,
+                                              typeOfAction: displayResult ? .add : .navigate)
                         }
                         .buttonStyle(.plain)
                     }
                 }
             }
             .navigationTitle("Mes ingrédients")
+            .toolbar {
+                if !savedIngredients.isEmpty {
+                    ToolbarItem(placement: .automatic) {
+                        Button("Modifier liste") {
+                            sheetIsPresented.toggle()
+                        }
+                    }
+                }
+            }
             .padding()
-
             Spacer()
         }
         .searchable(text: $searchText, isPresented: $displayResult, prompt: "Chercher un ingrédient")
+        .sheet(isPresented: $sheetIsPresented, content: {
+            List {
+                ForEach(savedIngredients, id: \.self) { ingredient in
+                    HStack {
+                        Button(action: {
+                            deleteIngredients(ingredient)
+                        }, label: {
+                            Image(systemName: "minus.circle.fill")
+                                .foregroundColor(.red)
+                        })
+                        Text(ingredient)
+                    }
+                }
+            }
+        })
     }
     
     private func addIngredient(_ ingredient: String) {
         guard !savedIngredients.contains(ingredient) else { return }
-        savedIngredients.append(ingredient)
-        saveIngredients()
+        withAnimation {
+            ingredients.removeAll { $0 == ingredient }
+            savedIngredients.append(ingredient)
+            saveIngredients()
+        }
+    }
+    
+    private func deleteIngredients(_ ingredient: String) {
+        withAnimation {
+            savedIngredients.removeAll { $0 == ingredient }
+            saveIngredients()
+        }
     }
     
     private func saveIngredients() {
