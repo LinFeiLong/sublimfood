@@ -17,7 +17,6 @@ struct ArticlesListView: View {
                         RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: true, isHeartFilled: true)
                     }
                 }
-                .frame(height: 50)
                 TitleView(title: "Recyclage", color: .cyan)
                 ScrollView(.horizontal) {
                     ForEach((1...5).reversed(), id: \.self) { _ in
