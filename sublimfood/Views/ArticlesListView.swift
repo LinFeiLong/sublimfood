@@ -8,25 +8,33 @@
 import SwiftUI
 
 struct ArticlesListView: View {
+    var otherArticles: [ArticleModel]
     var body: some View {
         NavigationStack {
-            VStack {
+            ScrollView(.vertical, showsIndicators: false) {
                 TitleView(title: "Congélation", color: .cyan)
-                ScrollView(.horizontal) {
-                    ForEach((1...5).reversed(), id: \.self) { _ in
-                        RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: true, isHeartFilled: true)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(otherArticles) {article in
+                            RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                        }
                     }
                 }
-                TitleView(title: "Recyclage", color: .cyan)
-                ScrollView(.horizontal) {
-                    ForEach((1...5).reversed(), id: \.self) { _ in
-                        RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: true, isHeartFilled: true)
+                TitleView(title: "Recyclage", color: .green)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(otherArticles) {article in
+                            RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                        }
                     }
                 }
-                TitleView(title: "Cosmetique", color: .cyan)
-                ScrollView(.horizontal) {
-                    ForEach((1...5).reversed(), id: \.self) { _ in
-                        RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: true, isHeartFilled: true)
+                
+                TitleView(title: "Cosmétiques", color: .pink)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(otherArticles) {article in
+                            RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                        }
                     }
                 }
             }
@@ -36,5 +44,5 @@ struct ArticlesListView: View {
 }
 
 #Preview {
-    ArticlesListView()
+    ArticlesListView(otherArticles: articlesModel)
 }
