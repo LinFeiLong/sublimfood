@@ -36,7 +36,10 @@ struct RecipeDetailView: View {
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(recipe.ingredients, id: \.self) { ingredient in
-                            IngredientButtonView(action: {}, imageName: "tomato", label: ingredient)
+                            Button(action: {}, label: {
+                                IngredientButtonView(imageName: "tomato", label: ingredient)
+                            })
+                           
                         }
                     }
                     .padding()

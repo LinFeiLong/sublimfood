@@ -37,23 +37,24 @@ struct IngredientsListView: View {
                 //                }
                 if displayResult {
                     ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
-                        IngredientButtonView(action: { addIngredient(ingredient) },
-                                             imageName: "tomato",
-                                             label: ingredient,
-                                             variant: .add)
+                        Button(action: {addIngredient(ingredient)}, label: {
+                            IngredientButtonView(
+                                imageName: "tomato",
+                                label: ingredient,
+                                variant: .add
+                            )
+                        })
                     }
                 } else {
                     ForEach(savedIngredients, id: \.self) { ingredient in
-                        VStack {
-                            NavigationLink {
-                                Text(ingredient)
-                            } label: {
-                                IngredientBtnView(label: ingredient,
-                                                  image: "tomato",
-                                                  action: true,
-                                                  typeOfAction: displayResult ? .add : .navigate)
-                            }
-                            .buttonStyle(.plain)
+                        NavigationLink {
+                            Text(ingredient)
+                        } label: {
+                            IngredientButtonView(
+                                imageName: "tomato",
+                                label: ingredient,
+                                variant: .navigation
+                            )
                         }
                     }
                 }
