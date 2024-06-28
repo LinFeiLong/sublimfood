@@ -10,53 +10,41 @@ import SwiftUI
 struct RecipesListView: View {
     var body: some View {
         NavigationStack {
-            VStack {
-                Rectangle()
-                    .fill(Color.orange)
-                    .frame(height: 100)
-                    .overlay(
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading){
+                    IngredientBtnView(label: "Tomates", image: "tomato", action: false)
+                    TitleView(title: "Recettes alimentaires", color: .cyan)
+                    ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            Button(action: {
-                                
-                                print("Back button tapped")
-                            }) {
-                                Image(systemName: "arrow.left")
-                                    .foregroundColor(.white)
-                                    .font(.title)
+                            ForEach(articlesModel) {article in
+                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
                             }
-                            .padding(.leading, 16)
-                            
-                            Spacer()
-                            
-                            Text("Recettes")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                
-                                print("Add button tapped")
-                            }) {
-                                Image(systemName: "plus")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                            }
-                            .padding(.trailing, 16)
                         }
-                            .padding(.horizontal)
-                    )
-                    .cornerRadius(10)
-                    .padding()
-                
-                Spacer()
+                    }
+                    TitleView(title: "Upcycling", color: .green)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(articlesModel) {article in
+                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            }
+                        }
+                    }
+                    
+                    TitleView(title: "Autres recettes", color: .pink)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(articlesModel) {article in
+                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            }
+                        }
+                    }
+                }
+                .padding()
             }
-        }.toolbarBackground(.orange)
-        
+            .navigationTitle("Recettes")
+        }
     }
 }
-
 #Preview {
     RecipesListView()
 }
