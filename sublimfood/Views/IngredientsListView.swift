@@ -22,41 +22,37 @@ struct IngredientsListView: View {
     @State var displayResult = false
     
     let columns = [
-        GridItem(.flexible(), spacing: 0),
-        GridItem(.flexible(), spacing: 0)
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20)
     ]
     
     var body: some View {
         NavigationStack {
-            LazyVGrid(columns: columns, spacing: 10)  {
-                VStack {
-                    if displayResult {
-                        ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
-                            Button(action: {
-                                addIngredient(ingredient)
-                            }, label: {
-                                IngredientBtnView(label: ingredient,
-                                                  image: "tomato",
-                                                  action: true,
-                                                  typeOfAction: .add)
-                            })
+            LazyVGrid(columns: columns, spacing: 20)  {
+                if displayResult {
+                    ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
+                        IngredientButtonView(action: {
+                            addIngredient(ingredient)
+                        }, imageName: "tomato", label: ingredient, variant: .add)
+                    }
+                } else {
+                    ForEach(savedIngredients, id: \.self) { ingredient in
+                        NavigationLink {
+                            Text(ingredient)
+                        } label: {
+//                            IngredientButtonView(label: ingredient,
+//                                              image: "tomato",
+//                                              action: true,
+//                                              typeOfAction: displayResult ? .add : .navigate)
                         }
-                    } else {
-                        ForEach(savedIngredients, id: \.self) { ingredient in
-                            NavigationLink {
-                                Text(ingredient)
-                            } label: {
-                                IngredientBtnView(label: ingredient,
-                                                  image: "tomato",
-                                                  action: true,
-                                                  typeOfAction: displayResult ? .add : .navigate)
-                            }
-                            .buttonStyle(.plain)
-                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }
             .navigationTitle("Mes ingrédients")
+            .padding()
+
+            Spacer()
         }
         .searchable(text: $searchText, isPresented: $displayResult, prompt: "Chercher un ingrédient")
     }

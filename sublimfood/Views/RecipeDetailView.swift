@@ -11,8 +11,8 @@ struct RecipeDetailView: View {
     var recipe: RecipeModel
     
     let columns = [
-        GridItem(.flexible(), spacing: 0),
-        GridItem(.flexible(), spacing: 0)
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20)
     ]
     
     var body: some View {
@@ -34,7 +34,7 @@ struct RecipeDetailView: View {
                         .font(.title)
                         .bold()
                     
-                    LazyVGrid(columns: columns, spacing: 0) {
+                    LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(recipe.ingredients, id: \.self) { ingredient in
                             IngredientButtonView(action: {}, imageName: "tomato", label: ingredient)
                         }
