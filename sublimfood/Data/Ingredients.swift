@@ -10,6 +10,9 @@ import Foundation
 struct Ingredients {
     static let all = [
         "Tomate",
-        "Orange"
+        "Orange",
+        "Pomme de terre",
+        "Carotte",
+        "Pain",
     ]
 }

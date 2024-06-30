@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct RecipesListView: View {
+    var ingredient: String
+    var recipes: [RecipeModel] {
+        Recipes.all.filter { $0.ingredients.contains(ingredient) }
+    }
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
@@ -46,6 +50,6 @@ struct RecipesListView: View {
     }
 }
 #Preview {
-    RecipesListView()
+    RecipesListView(ingredient: "Tomate")
 }
 

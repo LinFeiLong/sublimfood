@@ -37,18 +37,21 @@ struct IngredientsListView: View {
                 //                }
                 if displayResult {
                     ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
-                        Button(action: {addIngredient(ingredient)}, label: {
-                            IngredientButtonView(
-                                imageName: "tomato",
-                                label: ingredient,
-                                variant: .add
-                            )
-                        })
+                        if !savedIngredients.contains(ingredient) {
+                            Button(action: { addIngredient(ingredient) },
+                                   label: {
+                                IngredientButtonView(
+                                    imageName: "tomato",
+                                    label: ingredient,
+                                    variant: .add
+                                )
+                            })
+                        }
                     }
                 } else {
                     ForEach(savedIngredients, id: \.self) { ingredient in
                         NavigationLink {
-                            Text(ingredient)
+                            RecipesListView(ingredient: ingredient)
                         } label: {
                             IngredientButtonView(
                                 imageName: "tomato",
@@ -74,16 +77,25 @@ struct IngredientsListView: View {
         }
         .searchable(text: $searchText, isPresented: $displayResult, prompt: "Chercher un ingrédient")
         .sheet(isPresented: $sheetIsPresented, content: {
-            List {
-                ForEach(savedIngredients, id: \.self) { ingredient in
-                    HStack {
-                        Button(action: {
-                            deleteIngredients(ingredient)
-                        }, label: {
-                            Image(systemName: "minus.circle.fill")
-                                .foregroundColor(.red)
-                        })
-                        Text(ingredient)
+            VStack {
+                Button(action: {
+                    sheetIsPresented = false
+                }, label: {
+                    Image(systemName: "xmark.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.orange)
+                })
+                List {
+                    ForEach(savedIngredients, id: \.self) { ingredient in
+                        HStack {
+                            Button(action: {
+                                deleteIngredients(ingredient)
+                            }, label: {
+                                Image(systemName: "minus.circle.fill")
+                                    .foregroundColor(.red)
+                            })
+                            Text(ingredient)
+                        }
                     }
                 }
             }
@@ -91,9 +103,7 @@ struct IngredientsListView: View {
     }
     
     private func addIngredient(_ ingredient: String) {
-        guard !savedIngredients.contains(ingredient) else { return }
         withAnimation {
-            ingredients.removeAll { $0 == ingredient }
             savedIngredients.append(ingredient)
             saveIngredients()
         }
@@ -101,7 +111,6 @@ struct IngredientsListView: View {
     
     private func deleteIngredients(_ ingredient: String) {
         withAnimation {
-            ingredients.append(ingredient)
             savedIngredients.removeAll { $0 == ingredient }
             saveIngredients()
         }
