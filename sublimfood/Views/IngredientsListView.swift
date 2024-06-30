@@ -16,7 +16,7 @@ struct IngredientsListView: View {
         if searchText.isEmpty {
             return ingredients
         } else {
-            return ingredients.filter { $0.contains(searchText) }
+            return ingredients.filter { $0.lowercased().contains(searchText.lowercased()) }
         }
     }
     @State var displayResult = false

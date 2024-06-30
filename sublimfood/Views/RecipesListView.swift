@@ -46,6 +46,9 @@ struct RecipesListView: View {
                 .padding()
             }
             .navigationTitle("Recettes")
+            .onAppear(perform: {
+                print(recipes)
+            })
         }
     }
 }

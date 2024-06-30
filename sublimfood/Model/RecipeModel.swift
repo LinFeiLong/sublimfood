@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct RecipeModel: Identifiable {
-    let id = UUID()
+struct RecipeModel: Identifiable, Encodable & Decodable {
+    var id = UUID()
     let title: String
     let image: String
     let ingredients: [String]
