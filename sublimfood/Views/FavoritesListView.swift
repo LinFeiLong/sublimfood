@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FavoritesListView: View {
     
+    @State private var favoritesRecipes: [RecipeModel] = UserDefaults.standard.favoritesRecipes
+    
     let columns = [
         GridItem(.flexible(), spacing: 0),
         GridItem(.flexible(), spacing: 0)
@@ -19,12 +21,35 @@ struct FavoritesListView: View {
             VStack {
                 TitleView(title: "Mes Favoris", color: .pink)
                 HStack {
-                    ScrollView(.vertical) {
-                        LazyVGrid(columns: columns, spacing: 0) {
-                            ForEach((1...10).reversed(), id: \.self) { ingredient in
-                                RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: true, isHeartFilled: true)
+                    if !favoritesRecipes.isEmpty {
+                        ScrollView(.vertical) {
+                            LazyVGrid(columns: columns, spacing: 0) {
+                                ForEach(favoritesRecipes) { favorite in
+                                    NavigationLink {
+                                        RecipeDetailView(recipe: favorite)
+                                    } label: {
+                                        RecipeCardView(image: "boulettes_pdt",
+                                                       title: favorite.title,
+                                                       displayCircleHeart: true,
+                                                       isHeartFilled: true)
+                                    }
+                                }
                             }
                         }
+                    } else {
+                        VStack {
+                            Spacer()
+                            Image(systemName: "heart.slash")
+                                .font(.largeTitle)
+                                .padding()
+                                .foregroundColor(.orange)
+                            Text("Pas de favoris actuellement")
+                                .fontWeight(.light)
+                            Spacer()
+                        }
+                        .onAppear(perform: {
+                            favoritesRecipes.append(Recipes.all[0])
+                        })
                     }
                 }
             }
