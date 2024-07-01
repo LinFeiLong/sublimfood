@@ -84,5 +84,5 @@ struct RecipeDetailView: View {
 }
 
 #Preview {
-    RecipeDetailView(recipe: recipeModel)
+    RecipeDetailView(recipe: Recipes.all[0])
 }

@@ -12,6 +12,15 @@ struct RecipesListView: View {
     var recipes: [RecipeModel] {
         Recipes.all.filter { $0.ingredients.contains(ingredient) }
     }
+    var cookRecipes: [RecipeModel] {
+        recipes.filter { $0.typeOfRecipe == .cook }
+    }
+    var upCyclingRecipes: [RecipeModel] {
+        recipes.filter { $0.typeOfRecipe == .upcycling }
+    }
+    var otherRecipes: [RecipeModel] {
+        recipes.filter { $0.typeOfRecipe == .other }
+    }
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
@@ -30,7 +39,7 @@ struct RecipesListView: View {
                     TitleView(title: "Recettes alimentaires", color: .cyan)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
-                            ForEach(Recipes.all) {recipe in
+                            ForEach(cookRecipes) {recipe in
                                 NavigationLink {
                                     RecipeDetailView(recipe: recipe)
                                 } label: {
@@ -42,7 +51,7 @@ struct RecipesListView: View {
                     TitleView(title: "Upcycling", color: .green)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
-                            ForEach(Recipes.all) {recipe in
+                            ForEach(upCyclingRecipes) {recipe in
                                 NavigationLink {
                                     RecipeDetailView(recipe: recipe)
                                 } label: {
@@ -55,7 +64,7 @@ struct RecipesListView: View {
                     TitleView(title: "Autres recettes", color: .pink)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
-                            ForEach(Recipes.all) {recipe in
+                            ForEach(otherRecipes) {recipe in
                                 NavigationLink {
                                     RecipeDetailView(recipe: recipe)
                                 } label: {
