@@ -39,22 +39,9 @@ struct RecipeDetailView: View {
                                        borderColor: .orange)
                         }
                         
-                        Button {
-                            UIPasteboard.general.string = "#link"
-                            showAlert = true
-                        } label: {
-                            ButtonView(label: "Partager la recette", 
-                                       icon: "square.and.arrow.up",
-                                       fontColor: .orange,
-                                       color: .white,
-                                       borderColor: .orange)
-                        }.alert(isPresented: $showAlert) {
-                            Alert(
-                                title: Text("Lien copié"),
-                                message: Text("Le lien de la recette a bien été copié"),
-                                dismissButton: .default(Text("OK"))
-                            )
-                        }
+                        ShareLinkBtnView()
+                        
+                        
                     }
                     Text("Ingrédients")
                         .font(.title)
