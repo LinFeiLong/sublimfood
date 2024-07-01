@@ -19,7 +19,7 @@ struct RecipeDetailView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                Image("boulettes_pdt")
+                Image(recipe.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 300)
@@ -55,7 +55,8 @@ struct RecipeDetailView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(recipe.ingredients, id: \.self) { ingredient in
                             Button(action: {}, label: {
-                                IngredientButtonView(imageName: "tomato", label: ingredient)
+                                IngredientButtonView(imageName: ingredient.lowercased(), 
+                                                     label: ingredient)
                             })
                             
                         }

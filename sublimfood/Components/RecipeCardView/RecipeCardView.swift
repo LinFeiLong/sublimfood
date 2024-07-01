@@ -42,6 +42,14 @@ struct RecipeCardView: View {
     }
 }
 
-#Preview {
+#Preview("WithHeart") {
     RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: true, isHeartFilled: true)
+}
+
+#Preview("WithoutHeart") {
+    RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: false, isHeartFilled: true)
+}
+
+#Preview("WithHeartNotFilled") {
+    RecipeCardView(image: "boulettes_pdt", title: "Boulettes de Pommes de Terre", displayCircleHeart: true, isHeartFilled: false)
 }
