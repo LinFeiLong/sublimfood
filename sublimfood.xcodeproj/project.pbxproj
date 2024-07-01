@@ -99,8 +99,8 @@
 		02A1B0BA2C2C032F001045BB /* sublimfood */ = {
 			isa = PBXGroup;
 			children = (
-				F53E68272C32F974008D57C8 /* Manager */,
 				F51F73652C2C374C00B9D30B /* App */,
+				F53E68272C32F974008D57C8 /* Manager */,
 				02A1B0BF2C2C0331001045BB /* Assets.xcassets */,
 				02BC5D3C2C2C2F130002CD98 /* Components */,
 				F59F4F582C2E9D490076ED09 /* Data */,

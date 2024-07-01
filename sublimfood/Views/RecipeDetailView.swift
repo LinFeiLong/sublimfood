@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
+    
     var recipe: RecipeModel
     @EnvironmentObject var favoritesManager: FavoritesManager
-    @State var favorites = UserDefaults.standard.favoritesRecipes
     @State var showAlert = false
     var isFavorite: Bool {
-            favoritesManager.favorites.contains { $0.title == recipe.title }
-        }
+        favoritesManager.favorites.contains { $0.title == recipe.title }
+    }
     
     let columns = [
         GridItem(.flexible(), spacing: 20),
@@ -32,8 +32,7 @@ struct RecipeDetailView: View {
                 VStack(spacing: 20) {
                     VStack {
                         Button {
-                            print("Fav button Tapped")
-                                handleFavorite(recipe: recipe)
+                            handleFavorite(recipe: recipe)
                         } label: {
                             ButtonView(label: isFavorite ? "Retirer des favoris" : "Ajouter aux favoris",
                                        icon: isFavorite ? "heart.fill" : "heart",
@@ -41,10 +40,8 @@ struct RecipeDetailView: View {
                                        color: .orange,
                                        borderColor: .orange)
                         }
-                        
+                        .animation(.default, value: 2)
                         ShareLinkBtnView()
-                        
-                        
                     }
                     Text("Ingrédients")
                         .font(.title)
@@ -77,9 +74,6 @@ struct RecipeDetailView: View {
             }
         }
         .ignoresSafeArea()
-        .onAppear(perform: {
-            //
-        })
     }
     
     private func handleFavorite(recipe: RecipeModel) {
@@ -92,9 +86,6 @@ struct RecipeDetailView: View {
         }
     }
     
-    private func saveFavorites() {
-        UserDefaults.standard.favoritesRecipes = favorites
-    }
 }
 
 #Preview {
