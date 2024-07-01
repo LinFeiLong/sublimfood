@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ArticlesListView: View {
     var otherArticles: [ArticleModel]
+    
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 TitleView(title: "Congélation", color: .cyan)
+                    .padding(.top, 20)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(otherArticles) {article in
+                        ForEach(otherArticles.filter {$0.type == .frozen}) {article in
                             NavigationLink {
                                 ArticleView(article: article)
                             } label : {
@@ -24,10 +26,11 @@ struct ArticlesListView: View {
                         }
                     }
                 }
+                
                 TitleView(title: "Recyclage", color: .green)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(otherArticles) {article in
+                        ForEach(otherArticles.filter {$0.type == .recycle}) {article in
                             NavigationLink {
                                 ArticleView(article: article)
                             } label : {
@@ -40,7 +43,7 @@ struct ArticlesListView: View {
                 TitleView(title: "Cosmétiques", color: .pink)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(otherArticles) {article in
+                        ForEach(otherArticles.filter {$0.type == .cosmetic}) {article in
                             NavigationLink {
                                 ArticleView(article: article)
                             } label : {
