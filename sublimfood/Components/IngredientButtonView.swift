@@ -76,52 +76,49 @@ struct IngredientButtonView: View { // TODO: Modify to Ingredient View
     var variant: Variant?
     
     var body: some View {
-        GeometryReader { geometry in
-            HStack {
-                ZStack(alignment: .topTrailing) {
-                    switch variant {
-                    case .some(.add):
-                        ZStack {
-                            HStack {
-                                Spacer()
-                                CircleWithShadow()
-                            }
-                            IngredientButton(
-                                imageName: imageName,
-                                label: label
-                            )
-                            HStack {
-                                Spacer()
-                                CircleWithPlus().offset(x: 20)
-                            }
+        HStack {
+            ZStack(alignment: .topTrailing) {
+                switch variant {
+                case .some(.add):
+                    ZStack {
+                        HStack {
+                            Spacer()
+                            CircleWithShadow()
                         }
-                        
-                    case .some(.navigation):
-                        ZStack {
-                            IngredientButton(
-                                imageName: imageName,
-                                label: label
-                            )
-                            HStack {
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.gray)
-                                    .padding(.trailing, 10)
-                            }
-                        }
-                    default:
                         IngredientButton(
                             imageName: imageName,
                             label: label
                         )
+                        HStack {
+                            Spacer()
+                            CircleWithPlus().offset(x: 20)
+                        }
                     }
+                    
+                case .some(.navigation):
+                    ZStack {
+                        IngredientButton(
+                            imageName: imageName,
+                            label: label
+                        )
+                        HStack {
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
+                                .padding(.trailing, 10)
+                        }
+                    }
+                default:
+                    IngredientButton(
+                        imageName: imageName,
+                        label: label
+                    )
                 }
-                if (variant == .add) {
-                    Spacer(minLength: 20)
-                }
-            }            
+            }
+            if (variant == .add) {
+                Spacer(minLength: 20)
+            }
         }
-        .frame(height: BTN_HEIGHT)
     }
 }
 
