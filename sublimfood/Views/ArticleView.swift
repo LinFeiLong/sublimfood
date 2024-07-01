@@ -23,9 +23,11 @@ struct ArticleView: View {
                 
                 VStack {
                     VStack(alignment: .leading) {
-                        Text(article.caption)
-                            .font(.caption)
-                            .padding(.vertical, 10)
+                        if ((article.caption) != nil) {
+                            Text(article.caption!)
+                                .font(.caption)
+                                .padding(.vertical, 10)
+                        }
                         
                         Text(article.title)
                             .font(.title2)

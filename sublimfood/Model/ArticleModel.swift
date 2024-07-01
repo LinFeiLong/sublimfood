@@ -17,7 +17,7 @@ struct ArticleModel: Identifiable {
     let id = UUID()
     let title: String
     let image: String
-    let caption: String
+    let caption: String?
     let content: String
     let type   : TypeOfArticle
 }
