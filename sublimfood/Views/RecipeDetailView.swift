@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     var recipe: RecipeModel
+    @State var showAlert = false
     
     let columns = [
         GridItem(.flexible(), spacing: 20),
@@ -25,9 +26,26 @@ struct RecipeDetailView: View {
                 
                 VStack(spacing: 20) {
                     VStack {
-                        ButtonView(label: "Ajouter aux favoris", icon: "heart", fontColor: .white, color: .orange, borderColor: .orange)
+                        Button {
+                            
+                        } label: {
+                            ButtonView(label: "Ajouter aux favoris", icon: "heart", fontColor: .white, color: .orange, borderColor: .orange)
+                        }
                         
-                        ButtonView(label: "Partager la recette", icon: "square.and.arrow.up", fontColor: .orange, color: .white, borderColor: .orange)
+                        Button {
+                            UIPasteboard.general.string = "#link"
+                            showAlert = true
+                        } label: {
+                            ButtonView(label: "Partager la recette", icon: "square.and.arrow.up", fontColor: .orange, color: .white, borderColor: .orange)
+                        }.alert(isPresented: $showAlert) {
+                            Alert(
+                                title: Text("Lien copié"),
+                                message: Text("Le lien de la recette a bien été copié"),
+                                dismissButton: .default(Text("OK"))
+                            )
+                        }
+                        
+                        
                     }
                     
                     Text("Ingrédients")
@@ -39,7 +57,7 @@ struct RecipeDetailView: View {
                             Button(action: {}, label: {
                                 IngredientButtonView(imageName: "tomato", label: ingredient)
                             })
-                           
+                            
                         }
                     }
                     .padding()
