@@ -45,5 +45,5 @@ struct ArticleView: View {
 }
 
 #Preview {
-    ArticleView(article: articlesModel[0])
+    ArticleView(article: Articles.all[0])
 }
