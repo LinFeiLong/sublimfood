@@ -15,7 +15,7 @@ struct RecipeCardView: View {
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            VStack(spacing: 0) {
+            VStack(alignment: .center, spacing: 0) {
                 Image(image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -23,24 +23,22 @@ struct RecipeCardView: View {
                 
                 Text(title)
                     .bold()
-                    .foregroundStyle(.black)
+                    .foregroundColor(.black)
                     .font(.headline)
-                    .frame(maxWidth: .infinity, maxHeight: 50)
-                    .frame(height: 50)
+                    .frame(maxWidth: .infinity, minHeight: 50, alignment: .leading)
+                    .padding([.leading, .trailing], 10)
                     .background(Color.white)
-                    .padding([.leading, .trailing], 5)
                     .padding([.top, .bottom], 5)
-                
-            }
-            .frame(width: UIScreen.main.bounds.width * 0.45, height: 220)   .background(Color.white)
-            .cornerRadius(25)
-            .padding()
-            .shadow(radius: 5)
+                    .multilineTextAlignment(.leading)
+            }.frame(width: UIScreen.main.bounds.width * 0.45, height: 220)   .background(Color.white)
             
-            if displayCircleHeart { CircleHeartFillView(isHeartFilled: isHeartFilled)
+            if displayCircleHeart {
+                CircleHeartFillView(isHeartFilled: isHeartFilled)
+                    .offset(x: -10, y: 10)
             }
-            
         }
+        .cornerRadius(25)
+        .shadow(radius: 5)
     }
 }
 

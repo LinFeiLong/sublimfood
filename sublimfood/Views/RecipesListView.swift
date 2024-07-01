@@ -22,12 +22,14 @@ struct RecipesListView: View {
                             label: ingredient
                         )
                         .frame(width: geometry.size.width / 2)
+                        .padding([.leading, .trailing], 15)
+                        .padding([.top], 15)
                     }
                     .frame(height: BTN_HEIGHT)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 20)
                     TitleView(title: "Recettes alimentaires", color: .cyan)
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
+                        HStack (spacing: 20) {
                             ForEach(Recipes.all) {recipe in
                                 NavigationLink {
                                     RecipeDetailView(recipe: recipe)
@@ -35,11 +37,11 @@ struct RecipesListView: View {
                                     RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
                                 }
                             }
-                        }
+                        }.padding(15)
                     }
                     TitleView(title: "Upcycling", color: .green)
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
+                        HStack (spacing: 20) {
                             ForEach(Recipes.all) {recipe in
                                 NavigationLink {
                                     RecipeDetailView(recipe: recipe)
@@ -47,12 +49,12 @@ struct RecipesListView: View {
                                     RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
                                 }
                             }
-                        }
+                        }.padding(15)
                     }
                     
                     TitleView(title: "Autres recettes", color: .pink)
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
+                        HStack (spacing: 20) {
                             ForEach(Recipes.all) {recipe in
                                 NavigationLink {
                                     RecipeDetailView(recipe: recipe)
@@ -60,12 +62,13 @@ struct RecipesListView: View {
                                     RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
                                 }
                             }
-                        }
+                        }.padding(15)
                     }
                 }
-                .padding()
             }
             .navigationTitle("Recettes")
+            .toolbarBackground(Color.orange, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .onAppear(perform: {
                 print(recipes)
             })

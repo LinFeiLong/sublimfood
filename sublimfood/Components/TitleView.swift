@@ -21,6 +21,8 @@ struct TitleView: View {
                 .frame(width:20,height:5)
                 .offset(y: 15)
         }
+        .padding(.leading)
+        .padding(.top)
     }
 }
 
@@ -30,5 +32,4 @@ struct TitleView: View {
         TitleView(title: "Recyclage", color: .orange)
         TitleView(title: "Cosmetique", color: .orange)
     }
-    
 }

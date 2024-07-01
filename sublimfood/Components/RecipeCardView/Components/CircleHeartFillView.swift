@@ -24,7 +24,6 @@ struct CircleHeartFillView: View {
                 .foregroundStyle(.red)
                 .frame(width: 20, height: 20)
         }
-        .padding(25)
     }
 }
 
