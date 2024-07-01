@@ -16,7 +16,11 @@ struct ArticlesListView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(otherArticles) {article in
-                            RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            NavigationLink {
+                                ArticleView(article: article)
+                            } label : {
+                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            }
                         }
                     }
                 }
@@ -24,7 +28,11 @@ struct ArticlesListView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(otherArticles) {article in
-                            RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            NavigationLink {
+                                ArticleView(article: article)
+                            } label : {
+                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            }
                         }
                     }
                 }
@@ -33,7 +41,11 @@ struct ArticlesListView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(otherArticles) {article in
-                            RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            NavigationLink {
+                                ArticleView(article: article)
+                            } label : {
+                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            }
                         }
                     }
                 }

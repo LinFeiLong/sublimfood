@@ -12,7 +12,8 @@ enum Variant {
     case navigation
 }
 
-let CIRCLE_SIZE: CGFloat = 40
+private let CIRCLE_SIZE: CGFloat = 40
+let BTN_HEIGHT: CGFloat = 56
 
 private struct CircleWithPlus: View {
     let foregroundColor: Color = .orange
@@ -47,23 +48,22 @@ private struct IngredientButton: View {
     var label: String
     
     let circleOffsetX: CGFloat = 20
-    let btnWidth: CGFloat = .infinity
-    let btnHeight: CGFloat = 56
     let imageSize: CGFloat = 40
+    let padding: CGFloat = 10
     
     var body: some View {
-        HStack {
+        HStack() {
             Image(imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: imageSize, height: imageSize)
-                .padding(.leading, 10)
+                .padding(.leading, padding)
             Text(label)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             Spacer()
         }
-        .frame(width: btnWidth, height: btnHeight)
+        .frame(width: .infinity, height: BTN_HEIGHT)
         .background(.white)
         .cornerRadius(10)
         .shadow(radius: 5)
@@ -76,49 +76,52 @@ struct IngredientButtonView: View { // TODO: Modify to Ingredient View
     var variant: Variant?
     
     var body: some View {
-        HStack {
-            ZStack(alignment: .topTrailing) {
-                switch variant {
-                case .some(.add):
-                    ZStack {
-                        HStack {
-                            Spacer()
-                            CircleWithShadow()
+        GeometryReader { geometry in
+            HStack {
+                ZStack(alignment: .topTrailing) {
+                    switch variant {
+                    case .some(.add):
+                        ZStack {
+                            HStack {
+                                Spacer()
+                                CircleWithShadow()
+                            }
+                            IngredientButton(
+                                imageName: imageName,
+                                label: label
+                            )
+                            HStack {
+                                Spacer()
+                                CircleWithPlus().offset(x: 20)
+                            }
                         }
+                        
+                    case .some(.navigation):
+                        ZStack {
+                            IngredientButton(
+                                imageName: imageName,
+                                label: label
+                            )
+                            HStack {
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 10)
+                            }
+                        }
+                    default:
                         IngredientButton(
                             imageName: imageName,
                             label: label
                         )
-                        HStack {
-                            Spacer()
-                            CircleWithPlus().offset(x: 20)
-                        }
                     }
-                    
-                case .some(.navigation):
-                    ZStack {
-                        IngredientButton(
-                            imageName: imageName,
-                            label: label
-                        )
-                        HStack {
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.gray)
-                                .padding(.trailing, 10)
-                        }
-                    }
-                default:
-                    IngredientButton(
-                        imageName: imageName,
-                        label: label
-                    )
                 }
-            }
-            if (variant == .add) {
-                Spacer(minLength: 20)
-            }
+                if (variant == .add) {
+                    Spacer(minLength: 20)
+                }
+            }            
         }
+        .frame(height: BTN_HEIGHT)
     }
 }
 

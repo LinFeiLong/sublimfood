@@ -16,7 +16,15 @@ struct RecipesListView: View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading){
-                    IngredientBtnView(label: "Tomates", image: "tomato", action: false)
+                    GeometryReader { geometry in
+                        IngredientButtonView(
+                            imageName: "tomato",
+                            label: "Tomate"
+                        )
+                        .frame(width: geometry.size.width / 2)
+                    }
+                    .frame(height: BTN_HEIGHT)
+                    .padding(.bottom, 10)
                     TitleView(title: "Recettes alimentaires", color: .cyan)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
