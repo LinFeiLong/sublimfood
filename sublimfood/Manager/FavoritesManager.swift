@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class FavoritesManager: ObservableObject {
+    @Published var favorites: [RecipeModel] {
+        didSet {
+            UserDefaults.standard.favoritesRecipes = favorites
+        }
+    }
+    
+    init() {
+        self.favorites = UserDefaults.standard.favoritesRecipes
+    }
+}

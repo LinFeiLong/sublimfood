@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FavoritesListView: View {
     
-    @State private var favoritesRecipes: [RecipeModel] = UserDefaults.standard.favoritesRecipes
+    @EnvironmentObject var favoritesManager: FavoritesManager
     
     let columns = [
         GridItem(.flexible(), spacing: 0),
@@ -21,10 +21,10 @@ struct FavoritesListView: View {
             VStack {
                 TitleView(title: "Mes Favoris", color: .pink)
                 HStack {
-                    if !favoritesRecipes.isEmpty {
+                    if !favoritesManager.favorites.isEmpty {
                         ScrollView(.vertical) {
                             LazyVGrid(columns: columns, spacing: 0) {
-                                ForEach(favoritesRecipes) { favorite in
+                                ForEach(favoritesManager.favorites) { favorite in
                                     NavigationLink {
                                         RecipeDetailView(recipe: favorite)
                                     } label: {
@@ -47,9 +47,6 @@ struct FavoritesListView: View {
                                 .fontWeight(.light)
                             Spacer()
                         }
-                        .onAppear(perform: {
-                            favoritesRecipes = UserDefaults.standard.favoritesRecipes
-                        })
                     }
                 }
             }

@@ -9,9 +9,12 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     var recipe: RecipeModel
+    @EnvironmentObject var favoritesManager: FavoritesManager
     @State var favorites = UserDefaults.standard.favoritesRecipes
     @State var showAlert = false
-    @State var isFavorite = false
+    var isFavorite: Bool {
+            favoritesManager.favorites.contains { $0.title == recipe.title }
+        }
     
     let columns = [
         GridItem(.flexible(), spacing: 20),
@@ -82,11 +85,9 @@ struct RecipeDetailView: View {
     private func handleFavorite(recipe: RecipeModel) {
         withAnimation {
             if isFavorite {
-                favorites.removeAll { $0.title == recipe.title }
-                saveFavorites()
+                favoritesManager.favorites.removeAll { $0.title == recipe.title }
             } else {
-                favorites.append(recipe)
-                saveFavorites()
+                favoritesManager.favorites.append(recipe)
             }
         }
     }

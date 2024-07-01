@@ -26,6 +26,7 @@
 		F51F736A2C2C3C7500B9D30B /* IngredientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F73692C2C3C7500B9D30B /* IngredientsListView.swift */; };
 		F51F736C2C2D51EF00B9D30B /* ArticlesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F736B2C2D51EF00B9D30B /* ArticlesListView.swift */; };
 		F51F736E2C2D524900B9D30B /* FavoritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F736D2C2D524900B9D30B /* FavoritesListView.swift */; };
+		F53E68292C32F998008D57C8 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E68282C32F998008D57C8 /* FavoritesManager.swift */; };
 		F59F4F5A2C2E9D750076ED09 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F4F592C2E9D750076ED09 /* Ingredients.swift */; };
 		F59F4F5C2C2E9D870076ED09 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F4F5B2C2E9D870076ED09 /* Recipes.swift */; };
 		F59F4F5E2C2E9D950076ED09 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F4F5D2C2E9D950076ED09 /* Articles.swift */; };
@@ -53,6 +54,7 @@
 		F51F73692C2C3C7500B9D30B /* IngredientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IngredientsListView.swift; path = sublimfood/Views/IngredientsListView.swift; sourceTree = SOURCE_ROOT; };
 		F51F736B2C2D51EF00B9D30B /* ArticlesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListView.swift; sourceTree = "<group>"; };
 		F51F736D2C2D524900B9D30B /* FavoritesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListView.swift; sourceTree = "<group>"; };
+		F53E68282C32F998008D57C8 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		F59F4F592C2E9D750076ED09 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		F59F4F5B2C2E9D870076ED09 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		F59F4F5D2C2E9D950076ED09 /* Articles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		02A1B0BA2C2C032F001045BB /* sublimfood */ = {
 			isa = PBXGroup;
 			children = (
+				F53E68272C32F974008D57C8 /* Manager */,
 				F51F73652C2C374C00B9D30B /* App */,
 				02A1B0BF2C2C0331001045BB /* Assets.xcassets */,
 				02BC5D3C2C2C2F130002CD98 /* Components */,
@@ -184,6 +187,14 @@
 				F51F73672C2C39A000B9D30B /* RecipeModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F53E68272C32F974008D57C8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F53E68282C32F998008D57C8 /* FavoritesManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		F59F4F582C2E9D490076ED09 /* Data */ = {
@@ -276,6 +287,7 @@
 				F59F4F5A2C2E9D750076ED09 /* Ingredients.swift in Sources */,
 				02BC5D432C2C58490002CD98 /* CircleHeartFillView.swift in Sources */,
 				F59F4F5C2C2E9D870076ED09 /* Recipes.swift in Sources */,
+				F53E68292C32F998008D57C8 /* FavoritesManager.swift in Sources */,
 				F5173F7F2C2D9382004C96FD /* IngredientBtnView.swift in Sources */,
 				F51F73682C2C39A000B9D30B /* RecipeModel.swift in Sources */,
 				A54EE6DE2C2D94FE003866FE /* RecipeDetailView.swift in Sources */,
