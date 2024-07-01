@@ -17,7 +17,7 @@ struct MainTabView: View {
                 .tabItem { Label("Ingrédients", systemImage: "refrigerator")
                 }
                 .tag("Ingrédients")
-            ArticlesListView(otherArticles: articlesModel)
+            ArticlesListView(otherArticles: Articles.all)
                 .tabItem { Label("Astuces", systemImage: "lightbulb.max")
                 }
                 .tag("Astuces")
@@ -26,7 +26,7 @@ struct MainTabView: View {
                 }
                 .tag("Favoris")
             }
-        .navigationBarHidden(true)
+//        .navigationBarHidden(true)
         .accentColor(.orange) // DEPRECATED IN FUTUR iOS
     }
 }

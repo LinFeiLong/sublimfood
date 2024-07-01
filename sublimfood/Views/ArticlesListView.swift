@@ -51,10 +51,12 @@ struct ArticlesListView: View {
                 }
             }
             .navigationTitle("Astuces")
+            .toolbarBackground(Color.orange, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
         }
     }
 }
 
 #Preview {
-    ArticlesListView(otherArticles: articlesModel)
+    ArticlesListView(otherArticles: Articles.all)
 }
