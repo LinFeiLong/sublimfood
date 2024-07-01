@@ -28,7 +28,7 @@ struct FavoritesListView: View {
                                     NavigationLink {
                                         RecipeDetailView(recipe: favorite)
                                     } label: {
-                                        RecipeCardView(image: "boulettes_pdt",
+                                        RecipeCardView(image: favorite.image,
                                                        title: favorite.title,
                                                        displayCircleHeart: true,
                                                        isHeartFilled: true)
@@ -48,7 +48,7 @@ struct FavoritesListView: View {
                             Spacer()
                         }
                         .onAppear(perform: {
-                            favoritesRecipes.append(Recipes.all[0])
+                            favoritesRecipes = UserDefaults.standard.favoritesRecipes
                         })
                     }
                 }

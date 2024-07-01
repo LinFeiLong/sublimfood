@@ -9,7 +9,9 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     var recipe: RecipeModel
+    @State var favorites = UserDefaults.standard.favoritesRecipes
     @State var showAlert = false
+    @State var isFavorite = false
     
     let columns = [
         GridItem(.flexible(), spacing: 20),
@@ -27,16 +29,25 @@ struct RecipeDetailView: View {
                 VStack(spacing: 20) {
                     VStack {
                         Button {
-                            
+                            print("Fav button Tapped")
+                                handleFavorite(recipe: recipe)
                         } label: {
-                            ButtonView(label: "Ajouter aux favoris", icon: "heart", fontColor: .white, color: .orange, borderColor: .orange)
+                            ButtonView(label: isFavorite ? "Retirer des favoris" : "Ajouter aux favoris",
+                                       icon: isFavorite ? "heart.fill" : "heart",
+                                       fontColor: .white,
+                                       color: .orange,
+                                       borderColor: .orange)
                         }
                         
                         Button {
                             UIPasteboard.general.string = "#link"
                             showAlert = true
                         } label: {
-                            ButtonView(label: "Partager la recette", icon: "square.and.arrow.up", fontColor: .orange, color: .white, borderColor: .orange)
+                            ButtonView(label: "Partager la recette", 
+                                       icon: "square.and.arrow.up",
+                                       fontColor: .orange,
+                                       color: .white,
+                                       borderColor: .orange)
                         }.alert(isPresented: $showAlert) {
                             Alert(
                                 title: Text("Lien copié"),
@@ -44,21 +55,16 @@ struct RecipeDetailView: View {
                                 dismissButton: .default(Text("OK"))
                             )
                         }
-                        
-                        
                     }
-                    
                     Text("Ingrédients")
                         .font(.title)
                         .bold()
-                    
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(recipe.ingredients, id: \.self) { ingredient in
                             Button(action: {}, label: {
-                                IngredientButtonView(imageName: ingredient.lowercased(), 
+                                IngredientButtonView(imageName: ingredient.lowercased(),
                                                      label: ingredient)
                             })
-                            
                         }
                     }
                     .padding()
@@ -81,6 +87,25 @@ struct RecipeDetailView: View {
             }
         }
         .ignoresSafeArea()
+        .onAppear(perform: {
+            //
+        })
+    }
+    
+    private func handleFavorite(recipe: RecipeModel) {
+        withAnimation {
+            if isFavorite {
+                favorites.removeAll { $0.title == recipe.title }
+                saveFavorites()
+            } else {
+                favorites.append(recipe)
+                saveFavorites()
+            }
+        }
+    }
+    
+    private func saveFavorites() {
+        UserDefaults.standard.favoritesRecipes = favorites
     }
 }
 

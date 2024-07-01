@@ -40,7 +40,7 @@ struct Recipes {
         // Recettes avec Orange
         RecipeModel(
             title: "Gâteau aux Oranges",
-            image: "image_gateau_oranges.jpg",
+            image: "image_gateau_oranges",
             ingredients: ["Orange", "Farine", "Sucre", "Oeuf"],
             steps: ["Mélanger les ingrédients", "Cuire au four"],
             typeOfRecipe: .cook
