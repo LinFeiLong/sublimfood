@@ -20,16 +20,24 @@ struct RecipesListView: View {
                     TitleView(title: "Recettes alimentaires", color: .cyan)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(articlesModel) {article in
-                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            ForEach(Recipes.all) {recipe in
+                                NavigationLink {
+                                    RecipeDetailView(recipe: recipe)
+                                } label: {
+                                    RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                }
                             }
                         }
                     }
                     TitleView(title: "Upcycling", color: .green)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(articlesModel) {article in
-                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            ForEach(Recipes.all) {recipe in
+                                NavigationLink {
+                                    RecipeDetailView(recipe: recipe)
+                                } label: {
+                                    RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                }
                             }
                         }
                     }
@@ -37,8 +45,12 @@ struct RecipesListView: View {
                     TitleView(title: "Autres recettes", color: .pink)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(articlesModel) {article in
-                                RecipeCardView(image: article.image, title: article.title, displayCircleHeart: false, isHeartFilled: false)
+                            ForEach(Recipes.all) {recipe in
+                                NavigationLink {
+                                    RecipeDetailView(recipe: recipe)
+                                } label: {
+                                    RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                }
                             }
                         }
                     }
