@@ -14,5 +14,10 @@ struct Ingredients {
         "Pomme de terre",
         "Carotte",
         "Pain",
+        "Banane",
+        "Oeuf",
+        "Citrouille",
+        "Chocolat",
+        "Beurre"
     ]
 }

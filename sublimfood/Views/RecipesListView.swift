@@ -18,8 +18,8 @@ struct RecipesListView: View {
                 VStack(alignment: .leading){
                     GeometryReader { geometry in
                         IngredientButtonView(
-                            imageName: "tomato",
-                            label: "Tomate"
+                            imageName: ingredient.lowercased(),
+                            label: ingredient
                         )
                         .frame(width: geometry.size.width / 2)
                     }

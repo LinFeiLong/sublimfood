@@ -126,16 +126,16 @@ struct IngredientButtonView: View { // TODO: Modify to Ingredient View
 #Preview {
     VStack(spacing: 24) {
         IngredientButtonView(
-            imageName: "tomato",
+            imageName: "tomate",
             label: "Tomate"
         )
         IngredientButtonView(
-            imageName: "tomato",
+            imageName: "tomate",
             label: "Tomate",
             variant: .add
         )
         IngredientButtonView(
-            imageName: "tomato",
+            imageName: "tomate",
             label: "Tomate",
             variant: .navigation
         )

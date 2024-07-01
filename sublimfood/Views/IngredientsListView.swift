@@ -41,7 +41,7 @@ struct IngredientsListView: View {
                             Button(action: { addIngredient(ingredient) },
                                    label: {
                                 IngredientButtonView(
-                                    imageName: "tomato",
+                                    imageName: ingredient.lowercased(),
                                     label: ingredient,
                                     variant: .add
                                 )
@@ -54,7 +54,7 @@ struct IngredientsListView: View {
                             RecipesListView(ingredient: ingredient)
                         } label: {
                             IngredientButtonView(
-                                imageName: "tomato",
+                                imageName: ingredient.lowercased(),
                                 label: ingredient,
                                 variant: .navigation
                             )
