@@ -151,7 +151,7 @@ struct Recipes {
             image: "image_engrais_pain",
             ingredients: ["Pain"],
             steps: ["Faire tremper le pain dans l'eau", "Utiliser pour arroser les plantes"],
-            typeOfRecipe: .upcycling
+            typeOfRecipe: .other
         ),
         // Recettes avec Banane
         RecipeModel(
