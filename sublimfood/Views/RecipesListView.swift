@@ -40,10 +40,20 @@ struct RecipesListView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
                             ForEach(cookRecipes) {recipe in
-                                NavigationLink {
-                                    RecipeDetailView(recipe: recipe)
-                                } label: {
-                                    RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                ZStack {
+                                    NavigationLink {
+                                        RecipeDetailView(recipe: recipe)
+                                    } label: {
+                                        RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                    }
+                                    Button(action: {
+                                        // Action to handle heart icon tap
+                                        // You might want to toggle isHeartFilled or handle the favorite action
+                                        print("Button")
+                                    }) {
+                                        CircleHeartFillView(isHeartFilled: true)
+                                    }.offset(x: -10, y: 10)
+                                    
                                 }
                             }
                         }.padding(15)
@@ -65,11 +75,14 @@ struct RecipesListView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
                             ForEach(otherRecipes) {recipe in
+                                
+                                
                                 NavigationLink {
                                     RecipeDetailView(recipe: recipe)
                                 } label: {
                                     RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
                                 }
+                                
                             }
                         }.padding(15)
                     }
