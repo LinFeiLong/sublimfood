@@ -96,6 +96,9 @@ struct RecipeDetailView: View {
     
 }
 
-//#Preview {
-//    RecipeDetailView(recipe: Recipes.all[0])
-//}
+struct RecipeDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        RecipeDetailView(recipe: Recipes.all[0])
+            .environmentObject(FavoritesManager())
+    }
+}

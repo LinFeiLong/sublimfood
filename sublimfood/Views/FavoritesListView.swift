@@ -66,6 +66,9 @@ struct FavoritesListView: View {
     }
 }
 
-#Preview {
-    FavoritesListView()
+struct FavoritesListView_Previews: PreviewProvider {
+    static var previews: some View {
+        FavoritesListView()
+            .environmentObject(FavoritesManager())
+    }
 }

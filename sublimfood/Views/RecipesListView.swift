@@ -128,7 +128,12 @@ struct RecipesListView: View {
         }
     }
 }
-#Preview {
-    RecipesListView(ingredient: "Tomate")
+
+struct RecipesListView_Previews: PreviewProvider {
+    static var previews: some View {
+        RecipesListView(ingredient: "Tomate")
+            .environmentObject(FavoritesManager())
+    }
 }
+
 
