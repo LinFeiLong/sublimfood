@@ -25,9 +25,6 @@ struct MainTabView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().tintColor = .white
-        
-        // Customize UIBarButtonItem appearance
-//        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
     }
     
     var body: some View {
