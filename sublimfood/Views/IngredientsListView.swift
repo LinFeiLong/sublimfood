@@ -81,23 +81,23 @@ struct IngredientsListView: View {
                 Button(action: {
                     sheetIsPresented = false
                 }, label: {
-                    Image(systemName: "xmark.circle")
+                    Image(systemName: "checkmark")
                         .font(.largeTitle)
                         .foregroundColor(.orange)
                 })
-                List {
-                    ForEach(savedIngredients, id: \.self) { ingredient in
-                        HStack {
-                            Button(action: {
-                                deleteIngredients(ingredient)
-                            }, label: {
-                                Image(systemName: "minus.circle.fill")
-                                    .foregroundColor(.red)
-                            })
-                            Text(ingredient)
+                    List {
+                        ForEach(savedIngredients, id: \.self) { ingredient in
+                            HStack {
+                                Button(action: {
+                                    deleteIngredients(ingredient)
+                                }, label: {
+                                    Image(systemName: "minus.circle.fill")
+                                        .foregroundColor(.red)
+                                })
+                                Text(ingredient)
+                            }
                         }
                     }
-                }
             }
         })
     }

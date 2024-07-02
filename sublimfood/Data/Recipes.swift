@@ -113,7 +113,7 @@ struct Recipes {
         RecipeModel(
             title: "Engrais à base de Carottes",
             image: "image_engrais_carottes",
-            ingredients: ["Carottes"],
+            ingredients: ["Carotte"],
             steps: ["Sécher les épluchures", "Ajouter au compost"],
             typeOfRecipe: .upcycling
         ),
