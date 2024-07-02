@@ -18,11 +18,10 @@ struct FavoritesListView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                TitleView(title: "Mes Favoris", color: .pink)
-                HStack {
-                    if !favoritesManager.favorites.isEmpty {
-                        ScrollView(.vertical) {
+            ScrollView(.vertical) {
+                VStack {
+                    HStack {
+                        if !favoritesManager.favorites.isEmpty {
                             LazyVGrid(columns: columns, spacing: 0) {
                                 ForEach(favoritesManager.favorites) { favorite in
                                     ZStack {
@@ -47,19 +46,20 @@ struct FavoritesListView: View {
                                     }
                                 }
                             }
-                        }
-                    } else {
-                        VStack {
-                            Spacer()
-                            Image(systemName: "heart.slash")
-                                .font(.largeTitle)
-                                .padding()
-                                .foregroundColor(.orange)
-                            Text("Pas de favoris actuellement")
-                                .fontWeight(.light)
-                            Spacer()
+                        } else {
+                            VStack {
+                                Spacer()
+                                Image(systemName: "heart.slash")
+                                    .font(.largeTitle)
+                                    .padding()
+                                    .foregroundColor(.orange)
+                                Text("Pas de favoris actuellement")
+                                    .fontWeight(.light)
+                                Spacer()
+                            }
                         }
                     }
+                    .navigationTitle("Mes Favoris")
                 }
             }
         }
