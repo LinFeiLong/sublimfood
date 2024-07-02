@@ -49,11 +49,15 @@ struct RecipeDetailView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(recipe.ingredients, id: \.self) { ingredient in
                             Button(action: {}, label: {
-                                IngredientButtonView(imageName: ingredient.lowercased(),
-                                                     label: ingredient)
+                                IngredientButtonView(
+                                    imageName: ingredient.lowercased(),
+                                    label: ingredient
+                                )
+                                
                             })
                         }
                     }
+                    .frame(width: UIScreen.main.bounds.width - 30)
                     .padding()
                     
                     Text("Préparation")
@@ -77,7 +81,7 @@ struct RecipeDetailView: View {
                 .padding()
             }
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(edges: .top)
     }
     
     private func handleFavorite(recipe: RecipeModel) {
