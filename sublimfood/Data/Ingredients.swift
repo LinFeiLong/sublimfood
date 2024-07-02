@@ -22,7 +22,7 @@ struct Ingredients {
         "oignon",
         "Vinaigrette",
         "Ail",
-        "huile-d'olive",
+        "huile-olive",
         "lait",
         "farine",
         "Sucre",

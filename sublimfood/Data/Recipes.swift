@@ -19,7 +19,7 @@ struct Recipes {
         RecipeModel(
             title: "Sauce Tomate Maison",
             image: "image_sauce_tomate",
-            ingredients: ["Tomate", "Ail", "Huile d'olive"],
+            ingredients: ["Tomate", "ail", "Huile olive"],
             steps: ["Faire revenir l'ail", "Ajouter les tomates", "Mijoter"],
             typeOfRecipe: .cook
         ),
