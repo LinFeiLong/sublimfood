@@ -27,6 +27,10 @@ struct IngredientsListView: View {
         GridItem(.flexible(), spacing: 20)
     ]
     
+    init() {
+        UIUtilities.configureNavigationBarAppearance()
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -62,7 +66,7 @@ struct IngredientsListView: View {
                                 }
                             }
                         }
-                    }
+                    }.padding()
                 }
                 .navigationTitle("Mes ingrédients")
                 .toolbar { toolbarContent }
@@ -85,7 +89,6 @@ struct IngredientsListView: View {
                 }
             }
             .sheet(isPresented: $sheetIsPresented) { editIngredientsSheet }
-            .padding()
             .onAppear(perform: {
                 isSearchActive = false
             })
@@ -98,6 +101,7 @@ struct IngredientsListView: View {
                 Button("Modifier liste") {
                     sheetIsPresented.toggle()
                 }
+                .foregroundColor(.white)
             }
         }
     }

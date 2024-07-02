@@ -16,6 +16,11 @@ struct RecipesListView: View {
     var upCyclingRecipes: [RecipeModel] { recipes.filter { $0.typeOfRecipe == .upcycling } }
     var otherRecipes: [RecipeModel] { recipes.filter { $0.typeOfRecipe == .other } }
 
+    init(ingredient: String) {
+        self.ingredient = ingredient
+        UIUtilities.configureNavigationBarAppearance()
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
@@ -84,8 +89,8 @@ struct RecipesSectionView: View {
                         }
                         .offset(x: 60, y: -80)
                     }
-                }.padding(15)
-            }
+                }
+            }.padding(15)
         }
     }
 }

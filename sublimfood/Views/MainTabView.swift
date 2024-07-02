@@ -13,18 +13,7 @@ struct MainTabView: View {
     
     init(selectedTab: String = "Ingrédients") {
         _selectedTab = State(initialValue: selectedTab)
-
-        // Customize navigation bar appearance
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.orange
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().tintColor = .white
+        UIUtilities.configureNavigationBarAppearance()
     }
     
     var body: some View {

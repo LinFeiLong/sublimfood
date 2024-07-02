@@ -10,6 +10,11 @@ import SwiftUI
 struct ArticleView: View {
     var article: ArticleModel
     
+    init(article: ArticleModel) {
+        self.article = article
+        UIUtilities.configureNavigationBarAppearance()
+    }
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
@@ -36,10 +41,10 @@ struct ArticleView: View {
                         Text(article.content)
                     }
                     .padding()
-                    
                 }
             }
         }
+        .navigationTitle(article.title)
     }
 }
 

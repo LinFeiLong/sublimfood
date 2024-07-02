@@ -21,6 +21,11 @@ struct RecipeDetailView: View {
         GridItem(.flexible(), spacing: 20)
     ]
     
+    init(recipe: RecipeModel) {
+        self.recipe = recipe
+        UIUtilities.configureNavigationBarAppearance()
+    }
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
@@ -85,7 +90,8 @@ struct RecipeDetailView: View {
                 .padding()
             }
         }
-        .ignoresSafeArea(edges: .top)
+//        .ignoresSafeArea(edges: .top)
+        .navigationTitle(recipe.title)
     }
     
     private func handleFavorite(recipe: RecipeModel) {

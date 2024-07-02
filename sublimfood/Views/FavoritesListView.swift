@@ -16,13 +16,17 @@ struct FavoritesListView: View {
         GridItem(.flexible(), spacing: 0)
     ]
     
+    init() {
+        UIUtilities.configureNavigationBarAppearance()
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView(.vertical) {
                 VStack {
                     HStack {
                         if !favoritesManager.favorites.isEmpty {
-                            LazyVGrid(columns: columns, spacing: 0) {
+                            LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(favoritesManager.favorites) { favorite in
                                     ZStack {
                                         NavigationLink {
@@ -60,6 +64,8 @@ struct FavoritesListView: View {
                         }
                     }
                     .navigationTitle("Mes Favoris")
+                    .padding([.top, .bottom], 20)
+                    .padding([.leading, .trailing], 7.5)
                 }
             }
         }

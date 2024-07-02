@@ -10,12 +10,16 @@ import SwiftUI
 struct ArticlesListView: View {
     var otherArticles: [ArticleModel]
     
+    init(otherArticles: [ArticleModel]) {
+        self.otherArticles = otherArticles
+        UIUtilities.configureNavigationBarAppearance()
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading) {
                     TitleView(title: "Congélation", color: .cyan)
-                        .padding(.top, 20)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
                             ForEach(otherArticles.filter {$0.type == .frozen}) {article in

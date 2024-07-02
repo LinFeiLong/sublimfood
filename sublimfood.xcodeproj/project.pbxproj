@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020E6A1F2C3480E500210E44 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E6A1E2C3480E500210E44 /* UIUtilities.swift */; };
 		02A1B0BC2C2C032F001045BB /* SublimfoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B0BB2C2C032F001045BB /* SublimfoodApp.swift */; };
 		02A1B0C02C2C0331001045BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A1B0BF2C2C0331001045BB /* Assets.xcassets */; };
 		02A1B0C32C2C0331001045BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A1B0C22C2C0331001045BB /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020E6A1E2C3480E500210E44 /* UIUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
 		02A1B0B82C2C032F001045BB /* sublimfood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sublimfood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A1B0BB2C2C032F001045BB /* SublimfoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublimfoodApp.swift; sourceTree = "<group>"; };
 		02A1B0BF2C2C0331001045BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		020E6A1D2C3480B600210E44 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				020E6A1E2C3480E500210E44 /* UIUtilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		02173AEE2C2D6FA60017628A /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,13 +110,14 @@
 			isa = PBXGroup;
 			children = (
 				F51F73652C2C374C00B9D30B /* App */,
-				F53E68272C32F974008D57C8 /* Manager */,
 				02A1B0BF2C2C0331001045BB /* Assets.xcassets */,
 				02BC5D3C2C2C2F130002CD98 /* Components */,
 				F59F4F582C2E9D490076ED09 /* Data */,
 				F5173F802C2DA2A5004C96FD /* Extension */,
+				F53E68272C32F974008D57C8 /* Manager */,
 				F51F73662C2C395300B9D30B /* Model */,
 				02A1B0C12C2C0331001045BB /* Preview Content */,
+				020E6A1D2C3480B600210E44 /* Utilities */,
 				02BC5D4A2C2C5A2E0002CD98 /* Views */,
 			);
 			path = sublimfood;
@@ -283,6 +294,7 @@
 				02BC5D3F2C2C3DB90002CD98 /* IngredientButtonView.swift in Sources */,
 				F59F4F602C2EB1FF0076ED09 /* UserDefault+SavedIngredients.swift in Sources */,
 				C3A7283D2C2D54CC009A7080 /* ButtonView.swift in Sources */,
+				020E6A1F2C3480E500210E44 /* UIUtilities.swift in Sources */,
 				F51F736A2C2C3C7500B9D30B /* IngredientsListView.swift in Sources */,
 				F59F4F5A2C2E9D750076ED09 /* Ingredients.swift in Sources */,
 				02BC5D432C2C58490002CD98 /* CircleHeartFillView.swift in Sources */,
@@ -357,6 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -414,6 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
