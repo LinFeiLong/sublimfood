@@ -135,7 +135,7 @@ struct Recipes {
         RecipeModel(
             title: "Croûtons Maison",
             image: "image_croutons",
-            ingredients: ["Pain", "Huile d'olive", "Herbes"],
+            ingredients: ["Pain", "Huile olive", "Herbes"],
             steps: ["Couper le pain en dés", "Assaisonner et cuire au four"],
             typeOfRecipe: .cook
         ),
@@ -178,7 +178,7 @@ struct Recipes {
         RecipeModel(
             title: "Masque Capillaire à la Banane",
             image: "image_masque_capillaire",
-            ingredients: ["Banane", "Huile d'olive"],
+            ingredients: ["Banane", "Huile olive"],
             steps: ["Mixer la banane et l'huile", "Appliquer sur les cheveux"],
             typeOfRecipe: .other
         ),
