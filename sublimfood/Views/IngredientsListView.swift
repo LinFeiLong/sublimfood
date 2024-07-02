@@ -116,6 +116,10 @@ struct IngredientsListView: View {
     }
 }
 
-#Preview {
-    IngredientsListView()
+
+struct IngredientsListView_Previews: PreviewProvider {
+    static var previews: some View {
+        IngredientsListView()
+            .environmentObject(FavoritesManager())
+    }
 }

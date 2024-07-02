@@ -27,7 +27,7 @@ struct MainTabView: View {
                 .tag("Favoris")
             }
 //        .navigationBarHidden(true)
-        .accentColor(.orange) // DEPRECATED IN FUTUR iOS
+        //.accentColor(.orange) // DEPRECATED IN FUTUR iOS
     }
 }
 
