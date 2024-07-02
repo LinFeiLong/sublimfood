@@ -18,6 +18,18 @@ struct Ingredients {
         "Oeuf",
         "Citrouille",
         "Chocolat",
-        "Beurre"
+        "Beurre",
+        "oignon",
+        "Vinaigrette",
+        "Ail",
+        "huile-d'olive",
+        "lait",
+        "farine",
+        "Sucre",
+        "miel",
+        "bouillon",
+        "citron",
+        "Herbes",
+        
     ]
 }
