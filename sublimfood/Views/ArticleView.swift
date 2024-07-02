@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+func limitString(_ input: String, to length: Int, withTrailing trailing: String = "...") -> String {
+    if input.count > length {
+        let index = input.index(input.startIndex, offsetBy: length)
+        return String(input[..<index]) + trailing
+    } else {
+        return input
+    }
+}
+
 struct ArticleView: View {
     var article: ArticleModel
     
@@ -44,7 +53,9 @@ struct ArticleView: View {
                 }
             }
         }
-        .navigationTitle(article.title)
+        .navigationTitle(limitString(article.title, to: 22))
+        .accentColor(.white)
+        
     }
 }
 

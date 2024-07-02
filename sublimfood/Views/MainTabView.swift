@@ -18,19 +18,22 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-                IngredientsListView()
-                .tabItem { Label("Ingrédients", systemImage: "refrigerator")
+            IngredientsListView()
+                .tabItem { 
+                    Label("Ingrédients", systemImage: "refrigerator")
                 }
                 .tag("Ingrédients")
-            ArticlesListView(otherArticles: Articles.all)
-                .tabItem { Label("Astuces", systemImage: "lightbulb.max")
+            ArticlesListView()
+                .tabItem { 
+                    Label("Astuces", systemImage: "lightbulb")
                 }
                 .tag("Astuces")
-                FavoritesListView()
-                .tabItem { Label("Favoris", systemImage: "heart")
+            FavoritesListView()
+                .tabItem { 
+                    Label("Favoris", systemImage: "heart")
                 }
                 .tag("Favoris")
-            }
+        }
         .accentColor(.orange) // DEPRECATED IN FUTUR iOS
     }
 }

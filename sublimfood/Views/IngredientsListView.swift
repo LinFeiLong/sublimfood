@@ -68,7 +68,7 @@ struct IngredientsListView: View {
                         }
                     }.padding()
                 }
-                .navigationTitle("Mes ingrédients")
+                .navigationTitle("Ingrédients")
                 .toolbar { toolbarContent }
                 .searchable(text: $searchText,
                             isPresented: $isSearchActive,
@@ -92,7 +92,7 @@ struct IngredientsListView: View {
             .onAppear(perform: {
                 isSearchActive = false
             })
-        }
+        }.accentColor(.white)
     }
     
     private var toolbarContent: some ToolbarContent {

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
-    
     var recipe: RecipeModel
     @EnvironmentObject var favoritesManager: FavoritesManager
     @State var showAlert = false
@@ -90,8 +89,8 @@ struct RecipeDetailView: View {
                 .padding()
             }
         }
-//        .ignoresSafeArea(edges: .top)
         .navigationTitle(recipe.title)
+        .accentColor(.white)
     }
     
     private func handleFavorite(recipe: RecipeModel) {

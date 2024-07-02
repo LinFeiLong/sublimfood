@@ -7,22 +7,19 @@
 
 import SwiftUI
 
-struct ArticlesListView: View {
-    var otherArticles: [ArticleModel]
-    
-    init(otherArticles: [ArticleModel]) {
-        self.otherArticles = otherArticles
+struct ArticlesListView: View {    
+    init() {
         UIUtilities.configureNavigationBarAppearance()
     }
     
     var body: some View {
         NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
+            ScrollView(.vertical) {
                 VStack(alignment: .leading) {
                     TitleView(title: "Congélation", color: .cyan)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
-                            ForEach(otherArticles.filter {$0.type == .frozen}) {article in
+                            ForEach(Articles.all.filter {$0.type == .frozen}) {article in
                                 NavigationLink {
                                     ArticleView(article: article)
                                 } label : {
@@ -35,7 +32,7 @@ struct ArticlesListView: View {
                     TitleView(title: "Recyclage", color: .green)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
-                            ForEach(otherArticles.filter {$0.type == .recycle}) {article in
+                            ForEach(Articles.all.filter {$0.type == .recycle}) {article in
                                 NavigationLink {
                                     ArticleView(article: article)
                                 } label : {
@@ -48,7 +45,7 @@ struct ArticlesListView: View {
                     TitleView(title: "Cosmétiques", color: .pink)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
-                            ForEach(otherArticles.filter {$0.type == .cosmetic}) {article in
+                            ForEach(Articles.all.filter {$0.type == .cosmetic}) {article in
                                 NavigationLink {
                                     ArticleView(article: article)
                                 } label : {
@@ -57,13 +54,13 @@ struct ArticlesListView: View {
                             }
                         }.padding(15)
                     }
-                }
+                }.navigationTitle("Astuces")
             }
-            .navigationTitle("Astuces")
         }
+        .accentColor(.white)
     }
 }
 
 #Preview {
-    ArticlesListView(otherArticles: Articles.all)
+    ArticlesListView()
 }

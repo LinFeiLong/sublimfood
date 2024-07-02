@@ -63,12 +63,12 @@ struct FavoritesListView: View {
                             }
                         }
                     }
-                    .navigationTitle("Mes Favoris")
+                    .navigationTitle("Favoris")
                     .padding([.top, .bottom], 20)
                     .padding([.leading, .trailing], 7.5)
                 }
             }
-        }
+        }.accentColor(.white)
     }
 }
 

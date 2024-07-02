@@ -23,7 +23,7 @@ struct RecipesListView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
+            ScrollView(.vertical) {
                 VStack(alignment: .leading){
                     GeometryReader { geometry in
                         IngredientButtonView(
