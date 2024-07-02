@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+private func searchBarImage() -> UIImage {
+    let image = UIImage(systemName: "magnifyingglass")
+    return image!.withTintColor(UIColor(.white), renderingMode: .alwaysOriginal)
+}
+
 struct IngredientsListView: View {
     
     @State var searchText = ""
@@ -65,6 +70,19 @@ struct IngredientsListView: View {
                             isPresented: $isSearchActive,
                             placement: .navigationBarDrawer(displayMode: .always) ,
                             prompt: "Chercher un ingrédient" )
+                .onAppear {
+                    // Customize search bar appearance
+                    if let searchTextField = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]) as? UITextField {
+                        searchTextField.attributedPlaceholder = NSAttributedString(
+                            string: "Chercher un ingrédient",
+                            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+                        )
+                        searchTextField.textColor = UIColor.white
+                    }
+                    UISearchBar.appearance().barTintColor = UIColor.white
+                    UISearchBar.appearance().tintColor = UIColor.white
+                    UISearchBar.appearance().setImage(searchBarImage(), for: .search, state: .normal)
+                }
             }
             .sheet(isPresented: $sheetIsPresented) { editIngredientsSheet }
             .padding()
