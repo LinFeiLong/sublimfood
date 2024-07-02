@@ -244,11 +244,11 @@
 			};
 			buildConfigurationList = 02A1B0B32C2C032F001045BB /* Build configuration list for PBXProject "sublimfood" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				fr,
 			);
 			mainGroup = 02A1B0AF2C2C032F001045BB;
 			productRefGroup = 02A1B0B92C2C032F001045BB /* Products */;
