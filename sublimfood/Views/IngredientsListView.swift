@@ -125,7 +125,6 @@ struct IngredientsListView: View {
                 }
             }
         }
-        .padding(20)
     }
     
     private func addIngredient(_ ingredient: String) {
