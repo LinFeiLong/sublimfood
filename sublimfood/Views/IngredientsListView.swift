@@ -30,11 +30,6 @@ struct IngredientsListView: View {
     var body: some View {
         NavigationStack {
             LazyVGrid(columns: columns, spacing: 20)  {
-                //                if savedIngredients.isEmpty {
-                //                        Text("Commencez à ajouter des ingredients avec la barre de recherche")
-                //                            .font(.largeTitle)
-                //                            .multilineTextAlignment(.center)
-                //                }
                 if displayResult {
                     ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
                         if !savedIngredients.contains(ingredient) {

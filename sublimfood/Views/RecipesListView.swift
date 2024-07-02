@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecipesListView: View {
     var ingredient: String
+    @EnvironmentObject var favoritesManager: FavoritesManager
     var recipes: [RecipeModel] {
         Recipes.all.filter { $0.ingredients.contains(ingredient) }
     }
@@ -44,16 +45,21 @@ struct RecipesListView: View {
                                     NavigationLink {
                                         RecipeDetailView(recipe: recipe)
                                     } label: {
-                                        RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                        RecipeCardView(image: recipe.image, 
+                                                       title: recipe.title,
+                                                       displayCircleHeart: false,
+                                                       isHeartFilled: false)
                                     }
                                     Button(action: {
-                                        // Action to handle heart icon tap
-                                        // You might want to toggle isHeartFilled or handle the favorite action
-                                        print("Button")
+                                        withAnimation {
+                                            favoritesManager.toggleFavorite(recipe)
+                                        }
                                     }) {
-                                        CircleHeartFillView(isHeartFilled: true)
-                                    }.offset(x: -10, y: 10)
-                                    
+                                        CircleHeartFillView(
+                                            isHeartFilled: favoritesManager.isFavorite(recipe)
+                                        )
+                                    }
+                                    .offset(x: 60, y: -80)
                                 }
                             }
                         }.padding(15)
@@ -62,11 +68,27 @@ struct RecipesListView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
                             ForEach(upCyclingRecipes) {recipe in
-                                NavigationLink {
-                                    RecipeDetailView(recipe: recipe)
-                                } label: {
-                                    RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                ZStack {
+                                    NavigationLink {
+                                        RecipeDetailView(recipe: recipe)
+                                    } label: {
+                                        RecipeCardView(image: recipe.image, 
+                                                       title: recipe.title,
+                                                       displayCircleHeart: false,
+                                                       isHeartFilled: false)
+                                    }
+                                    Button(action: {
+                                        withAnimation {
+                                            favoritesManager.toggleFavorite(recipe)
+                                        }
+                                    }) {
+                                        CircleHeartFillView(
+                                            isHeartFilled: favoritesManager.isFavorite(recipe)
+                                        )
+                                    }
+                                    .offset(x: 60, y: -80)
                                 }
+                                
                             }
                         }.padding(15)
                     }
@@ -75,16 +97,25 @@ struct RecipesListView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
                             ForEach(otherRecipes) {recipe in
-                                
-                                
-                                NavigationLink {
-                                    RecipeDetailView(recipe: recipe)
-                                } label: {
-                                    RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                ZStack {
+                                    NavigationLink {
+                                        RecipeDetailView(recipe: recipe)
+                                    } label: {
+                                        RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                    }
+                                    Button(action: {
+                                        withAnimation {
+                                            favoritesManager.toggleFavorite(recipe)
+                                        }
+                                    }) {
+                                        CircleHeartFillView(
+                                            isHeartFilled: favoritesManager.isFavorite(recipe)
+                                        )
+                                    }
+                                    .offset(x: 60, y: -80)
                                 }
-                                
-                            }
-                        }.padding(15)
+                            }.padding(15)
+                        }
                     }
                 }
             }

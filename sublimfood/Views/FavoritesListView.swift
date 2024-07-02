@@ -25,13 +25,25 @@ struct FavoritesListView: View {
                         ScrollView(.vertical) {
                             LazyVGrid(columns: columns, spacing: 0) {
                                 ForEach(favoritesManager.favorites) { favorite in
-                                    NavigationLink {
-                                        RecipeDetailView(recipe: favorite)
-                                    } label: {
-                                        RecipeCardView(image: favorite.image,
-                                                       title: favorite.title,
-                                                       displayCircleHeart: true,
-                                                       isHeartFilled: true)
+                                    ZStack {
+                                        NavigationLink {
+                                            RecipeDetailView(recipe: favorite)
+                                        } label: {
+                                            RecipeCardView(image: favorite.image,
+                                                           title: favorite.title,
+                                                           displayCircleHeart: true,
+                                                           isHeartFilled: true)
+                                        }
+                                        Button(action: {
+                                            withAnimation {
+                                                favoritesManager.toggleFavorite(favorite)
+                                            }
+                                        }) {
+                                            CircleHeartFillView(
+                                                isHeartFilled: favoritesManager.isFavorite(favorite)
+                                            )
+                                        }
+                                        .offset(x: 60, y: -80)
                                     }
                                 }
                             }

@@ -88,6 +88,6 @@ struct RecipeDetailView: View {
     
 }
 
-#Preview {
-    RecipeDetailView(recipe: Recipes.all[0])
-}
+//#Preview {
+//    RecipeDetailView(recipe: Recipes.all[0])
+//}

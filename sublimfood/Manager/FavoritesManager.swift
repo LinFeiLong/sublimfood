@@ -17,4 +17,16 @@ class FavoritesManager: ObservableObject {
     init() {
         self.favorites = UserDefaults.standard.favoritesRecipes
     }
+    
+    func isFavorite(_ recipe: RecipeModel) -> Bool {
+        favorites.contains { $0.title == recipe.title }
+    }
+    
+    func toggleFavorite(_ recipe: RecipeModel) {
+        if favorites.contains(where: { $0.title == recipe.title }) {
+            favorites.removeAll { $0.title == recipe.title }
+        } else {
+            favorites.append(recipe)
+        }
+    }
 }
