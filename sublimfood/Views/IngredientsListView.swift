@@ -29,6 +29,9 @@ struct IngredientsListView: View {
     
     var body: some View {
         NavigationStack {
+            if savedIngredients.isEmpty {
+                EmptyIngredientListView()
+            }
             LazyVGrid(columns: columns, spacing: 20)  {
                 if displayResult {
                     ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
@@ -113,6 +116,23 @@ struct IngredientsListView: View {
     
     private func saveIngredients() {
         UserDefaults.standard.savedIngredients = savedIngredients
+    }
+}
+
+struct EmptyIngredientListView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            Image(systemName: "frying.pan.fill")
+                .padding()
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+            Text("Aucun ingredient enregistré")
+                .fontWeight(.thin)
+            Text("Utilisez la barre de recherche pour en ajouter")
+                .padding()
+            Spacer()
+        }
     }
 }
 

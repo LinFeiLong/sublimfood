@@ -37,84 +37,89 @@ struct RecipesListView: View {
                     }
                     .frame(height: BTN_HEIGHT)
                     .padding(.bottom, 20)
-                    TitleView(title: "Recettes alimentaires", color: .cyan)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack (spacing: 20) {
-                            ForEach(cookRecipes) {recipe in
-                                ZStack {
-                                    NavigationLink {
-                                        RecipeDetailView(recipe: recipe)
-                                    } label: {
-                                        RecipeCardView(image: recipe.image, 
-                                                       title: recipe.title,
-                                                       displayCircleHeart: false,
-                                                       isHeartFilled: false)
-                                    }
-                                    Button(action: {
-                                        withAnimation {
-                                            favoritesManager.toggleFavorite(recipe)
+                    if !cookRecipes.isEmpty {
+                        TitleView(title: "Recettes alimentaires", color: .cyan)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack (spacing: 20) {
+                                ForEach(cookRecipes) {recipe in
+                                    ZStack {
+                                        NavigationLink {
+                                            RecipeDetailView(recipe: recipe)
+                                        } label: {
+                                            RecipeCardView(image: recipe.image,
+                                                           title: recipe.title,
+                                                           displayCircleHeart: false,
+                                                           isHeartFilled: false)
                                         }
-                                    }) {
-                                        CircleHeartFillView(
-                                            isHeartFilled: favoritesManager.isFavorite(recipe)
-                                        )
-                                    }
-                                    .offset(x: 60, y: -80)
-                                }
-                            }
-                        }.padding(15)
-                    }
-                    TitleView(title: "Upcycling", color: .green)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack (spacing: 20) {
-                            ForEach(upCyclingRecipes) {recipe in
-                                ZStack {
-                                    NavigationLink {
-                                        RecipeDetailView(recipe: recipe)
-                                    } label: {
-                                        RecipeCardView(image: recipe.image, 
-                                                       title: recipe.title,
-                                                       displayCircleHeart: false,
-                                                       isHeartFilled: false)
-                                    }
-                                    Button(action: {
-                                        withAnimation {
-                                            favoritesManager.toggleFavorite(recipe)
+                                        Button(action: {
+                                            withAnimation {
+                                                favoritesManager.toggleFavorite(recipe)
+                                            }
+                                        }) {
+                                            CircleHeartFillView(
+                                                isHeartFilled: favoritesManager.isFavorite(recipe)
+                                            )
                                         }
-                                    }) {
-                                        CircleHeartFillView(
-                                            isHeartFilled: favoritesManager.isFavorite(recipe)
-                                        )
+                                        .offset(x: 60, y: -80)
                                     }
-                                    .offset(x: 60, y: -80)
-                                }
-                                
-                            }
-                        }.padding(15)
-                    }
-                    
-                    TitleView(title: "Autres recettes", color: .pink)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack (spacing: 20) {
-                            ForEach(otherRecipes) {recipe in
-                                ZStack {
-                                    NavigationLink {
-                                        RecipeDetailView(recipe: recipe)
-                                    } label: {
-                                        RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
-                                    }
-                                    Button(action: {
-                                        withAnimation {
-                                            favoritesManager.toggleFavorite(recipe)
-                                        }
-                                    }) {
-                                        CircleHeartFillView(
-                                            isHeartFilled: favoritesManager.isFavorite(recipe)
-                                        )
-                                    }
-                                    .offset(x: 60, y: -80)
                                 }
                             }.padding(15)
+                        }
+                    }
+                    if !upCyclingRecipes.isEmpty {
+                        TitleView(title: "Upcycling", color: .green)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack (spacing: 20) {
+                                ForEach(upCyclingRecipes) {recipe in
+                                    ZStack {
+                                        NavigationLink {
+                                            RecipeDetailView(recipe: recipe)
+                                        } label: {
+                                            RecipeCardView(image: recipe.image,
+                                                           title: recipe.title,
+                                                           displayCircleHeart: false,
+                                                           isHeartFilled: false)
+                                        }
+                                        Button(action: {
+                                            withAnimation {
+                                                favoritesManager.toggleFavorite(recipe)
+                                            }
+                                        }) {
+                                            CircleHeartFillView(
+                                                isHeartFilled: favoritesManager.isFavorite(recipe)
+                                            )
+                                        }
+                                        .offset(x: 60, y: -80)
+                                    }
+                                    
+                                }
+                            }.padding(15)
+                        }
+                    }
+                    if !otherRecipes.isEmpty {
+                        TitleView(title: "Autres recettes", color: .pink)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack (spacing: 20) {
+                                ForEach(otherRecipes) {recipe in
+                                    ZStack {
+                                        NavigationLink {
+                                            RecipeDetailView(recipe: recipe)
+                                        } label: {
+                                            RecipeCardView(image: recipe.image, title: recipe.title, displayCircleHeart: false, isHeartFilled: false)
+                                        }
+                                        Button(action: {
+                                            withAnimation {
+                                                favoritesManager.toggleFavorite(recipe)
+                                            }
+                                        }) {
+                                            CircleHeartFillView(
+                                                isHeartFilled: favoritesManager.isFavorite(recipe)
+                                            )
+                                        }
+                                        .offset(x: 60, y: -80)
+                                    }
+                                }.padding(15)
+                            }
                         }
                     }
                 }
