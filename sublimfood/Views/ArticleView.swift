@@ -39,8 +39,6 @@ struct ArticleView: View {
                     
                 }
             }
-            
-            
         }
     }
 }

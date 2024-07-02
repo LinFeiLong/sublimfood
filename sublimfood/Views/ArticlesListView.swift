@@ -11,7 +11,7 @@ struct ArticlesListView: View {
     var otherArticles: [ArticleModel]
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading) {
                     TitleView(title: "Congélation", color: .cyan)
@@ -27,7 +27,7 @@ struct ArticlesListView: View {
                             }
                         }.padding(15)
                     }
-                    
+
                     TitleView(title: "Recyclage", color: .green)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack (spacing: 20) {
@@ -56,8 +56,6 @@ struct ArticlesListView: View {
                 }
             }
             .navigationTitle("Astuces")
-            .toolbarBackground(Color.orange, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
         }
     }
 }

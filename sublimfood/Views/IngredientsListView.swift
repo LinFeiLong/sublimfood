@@ -67,6 +67,7 @@ struct IngredientsListView: View {
                         Button("Modifier liste") {
                             sheetIsPresented.toggle()
                         }
+                        .foregroundColor(.white)
                     }
                 }
             }

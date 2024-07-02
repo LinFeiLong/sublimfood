@@ -9,7 +9,26 @@ import SwiftUI
 
 struct MainTabView: View {
     
-    @State var selectedTab = "Ingrédients"
+    @State private var selectedTab: String
+    
+    init(selectedTab: String = "Ingrédients") {
+        _selectedTab = State(initialValue: selectedTab)
+
+        // Customize navigation bar appearance
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.orange
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().tintColor = .white
+        
+        // Customize UIBarButtonItem appearance
+//        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+    }
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -26,8 +45,7 @@ struct MainTabView: View {
                 }
                 .tag("Favoris")
             }
-//        .navigationBarHidden(true)
-        //.accentColor(.orange) // DEPRECATED IN FUTUR iOS
+        .accentColor(.orange) // DEPRECATED IN FUTUR iOS
     }
 }
 
