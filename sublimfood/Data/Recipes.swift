@@ -293,7 +293,7 @@ struct Recipes {
         ),
         RecipeModel(
             title: "Baume à Lèvres au Beurre",
-            image: "image_baume_lèvres.jpg",
+            image: "image_baume_levres",
             ingredients: ["Beurre", "Huile de coco"],
             steps: ["Mélanger le beurre fondu avec l'huile", "Mettre dans un pot"],
             typeOfRecipe: .other
