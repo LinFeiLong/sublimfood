@@ -24,53 +24,6 @@ struct IngredientsListView: View {
     
     var body: some View {
         NavigationStack {
-            if savedIngredients.isEmpty {
-                EmptyIngredientListView()
-            }
-            LazyVGrid(columns: columns, spacing: 20)  {
-                if displayResult {
-                    ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
-                        if !savedIngredients.contains(ingredient) {
-                            Button(action: { addIngredient(ingredient) },
-                                   label: {
-                                IngredientButtonView(
-                                    imageName: ingredient.lowercased(),
-                                    label: ingredient,
-                                    variant: .add
-                                )
-                            })
-                        }
-                    }
-                } else {
-                    ForEach(savedIngredients, id: \.self) { ingredient in
-                        NavigationLink {
-                            RecipesListView(ingredient: ingredient)
-                        } label: {
-                            IngredientButtonView(
-                                imageName: ingredient.lowercased(),
-                                label: ingredient,
-                                variant: .navigation
-                            )
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Mes ingrédients")
-            .toolbar {
-                if !savedIngredients.isEmpty {
-                    ToolbarItem(placement: .automatic) {
-                        Button("Modifier liste") {
-                            sheetIsPresented.toggle()
-                        }
-                        .foregroundColor(.white)
-                    }
-                }
-            }
-            .padding()
-            Spacer()
-        }
-        .searchable(text: $searchText, isPresented: $displayResult, prompt: "Chercher un ingrédient")
-        .sheet(isPresented: $sheetIsPresented, content: {
             VStack {
                 if savedIngredients.isEmpty && !displayResult {
                     EmptyIngredientListView()
@@ -114,83 +67,82 @@ struct IngredientsListView: View {
             .sheet(isPresented: $sheetIsPresented) { editIngredientsSheet }
             .padding()
         }
-        
-    }
-    
-    private var toolbarContent: some ToolbarContent {
-        ToolbarItem(placement: .automatic) {
-            if !savedIngredients.isEmpty {
-                Button("Modifier liste") {
-                    sheetIsPresented.toggle()
-                }
-            }
-        }
-    }
-    
-    private var editIngredientsSheet: some View {
-        VStack {
-            Button(action: { sheetIsPresented = false }) {
-                Image(systemName: "checkmark")
-                    .font(.largeTitle)
-                    .foregroundColor(.orange)
-            }
-            List {
-                ForEach(savedIngredients, id: \.self) { ingredient in
-                    HStack {
-                        Button(action: { deleteIngredients(ingredient) }) {
-                            Image(systemName: "minus.circle.fill")
-                                .foregroundColor(.red)
-                        }
-                        Text(ingredient)
+               }
+               
+            private var toolbarContent: some ToolbarContent {
+            ToolbarItem(placement: .automatic) {
+                if !savedIngredients.isEmpty {
+                    Button("Modifier liste") {
+                        sheetIsPresented.toggle()
                     }
                 }
             }
         }
-        .padding(20)
-    }
-    
-    private func addIngredient(_ ingredient: String) {
-        withAnimation {
-            savedIngredients.append(ingredient)
-            saveIngredients()
+               
+               private var editIngredientsSheet: some View {
+            VStack {
+                Button(action: { sheetIsPresented = false }) {
+                    Image(systemName: "checkmark")
+                        .font(.largeTitle)
+                        .foregroundColor(.orange)
+                }
+                List {
+                    ForEach(savedIngredients, id: \.self) { ingredient in
+                        HStack {
+                            Button(action: { deleteIngredients(ingredient) }) {
+                                Image(systemName: "minus.circle.fill")
+                                    .foregroundColor(.red)
+                            }
+                            Text(ingredient)
+                        }
+                    }
+                }
+            }
+            .padding(20)
         }
-    }
-    
-    private func deleteIngredients(_ ingredient: String) {
-        withAnimation {
-            savedIngredients.removeAll { $0 == ingredient }
-            saveIngredients()
+               
+               private func addIngredient(_ ingredient: String) {
+            withAnimation {
+                savedIngredients.append(ingredient)
+                saveIngredients()
+            }
         }
-    }
-    
-    private func saveIngredients() {
-        UserDefaults.standard.savedIngredients = savedIngredients
-    }
-}
-
-struct EmptyIngredientListView: View {
-    var body: some View {
-        VStack {
-            Spacer()
-            Image(systemName: "frying.pan.fill")
-                .padding()
-                .font(.largeTitle)
-                .foregroundColor(.orange)
-            Text("Aucun ingredient enregistré")
-                .fontWeight(.thin)
-            Text("Utilisez la barre de recherche pour en ajouter")
-                .padding()
-            Spacer()
+               
+               private func deleteIngredients(_ ingredient: String) {
+            withAnimation {
+                savedIngredients.removeAll { $0 == ingredient }
+                saveIngredients()
+            }
         }
-    }
-}
-
-
-struct IngredientsListView_Previews: PreviewProvider {
-    static var previews: some View {
-        IngredientsListView()
-            .environmentObject(FavoritesManager())
-    }
-}
-
-
+               
+               private func saveIngredients() {
+            UserDefaults.standard.savedIngredients = savedIngredients
+        }
+               }
+               
+               struct EmptyIngredientListView: View {
+            var body: some View {
+                VStack {
+                    Spacer()
+                    Image(systemName: "frying.pan.fill")
+                        .padding()
+                        .font(.largeTitle)
+                        .foregroundColor(.orange)
+                    Text("Aucun ingredient enregistré")
+                        .fontWeight(.thin)
+                    Text("Utilisez la barre de recherche pour en ajouter")
+                        .padding()
+                    Spacer()
+                }
+            }
+        }
+               
+               
+               struct IngredientsListView_Previews: PreviewProvider {
+            static var previews: some View {
+                IngredientsListView()
+                    .environmentObject(FavoritesManager())
+            }
+        }
+               
+               
