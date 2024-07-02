@@ -13,12 +13,7 @@ struct IngredientsListView: View {
     @State var ingredients = Ingredients.all
     @State private var savedIngredients: [String] = UserDefaults.standard.savedIngredients
     var results: [String] {
-        if searchText.isEmpty {
-            return ingredients
-        } else {
-            return ingredients.filter { $0.lowercased().contains(searchText.lowercased()) }
-        }
-    }
+        searchText.isEmpty ? ingredients : ingredients.filter { $0.lowercased().contains(searchText.lowercased()) } }
     @State var displayResult = false
     @State var sheetIsPresented = false
     
@@ -77,28 +72,81 @@ struct IngredientsListView: View {
         .searchable(text: $searchText, isPresented: $displayResult, prompt: "Chercher un ingrédient")
         .sheet(isPresented: $sheetIsPresented, content: {
             VStack {
-                Button(action: {
-                    sheetIsPresented = false
-                }, label: {
-                    Image(systemName: "checkmark")
-                        .font(.largeTitle)
-                        .foregroundColor(.orange)
-                })
-                    List {
-                        ForEach(savedIngredients, id: \.self) { ingredient in
-                            HStack {
-                                Button(action: {
-                                    deleteIngredients(ingredient)
-                                }, label: {
-                                    Image(systemName: "minus.circle.fill")
-                                        .foregroundColor(.red)
-                                })
-                                Text(ingredient)
+                if savedIngredients.isEmpty && !displayResult {
+                    EmptyIngredientListView()
+                }
+                ScrollView(.vertical) {
+                    LazyVGrid(columns: columns, spacing: 20)  {
+                        if displayResult {
+                            ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
+                                if !savedIngredients.contains(ingredient) {
+                                    Button(action: { addIngredient(ingredient) },
+                                           label: {
+                                        IngredientButtonView(
+                                            imageName: ingredient.lowercased(),
+                                            label: ingredient,
+                                            variant: .add
+                                        )
+                                    })
+                                }
+                            }
+                        }
+                        else
+                        {
+                            ForEach(savedIngredients, id: \.self) { ingredient in
+                                NavigationLink {
+                                    RecipesListView(ingredient: ingredient)
+                                } label: {
+                                    IngredientButtonView(
+                                        imageName: ingredient.lowercased(),
+                                        label: ingredient,
+                                        variant: .navigation
+                                    )
+                                }
                             }
                         }
                     }
+                }
+                .navigationTitle("Mes ingrédients")
+                .toolbar { toolbarContent }
             }
-        })
+            .searchable(text: $searchText, isPresented: $displayResult, prompt: "Chercher un ingrédient")
+            .sheet(isPresented: $sheetIsPresented) { editIngredientsSheet }
+            .padding()
+        }
+        
+    }
+    
+    private var toolbarContent: some ToolbarContent {
+        ToolbarItem(placement: .automatic) {
+            if !savedIngredients.isEmpty {
+                Button("Modifier liste") {
+                    sheetIsPresented.toggle()
+                }
+            }
+        }
+    }
+    
+    private var editIngredientsSheet: some View {
+        VStack {
+            Button(action: { sheetIsPresented = false }) {
+                Image(systemName: "checkmark")
+                    .font(.largeTitle)
+                    .foregroundColor(.orange)
+            }
+            List {
+                ForEach(savedIngredients, id: \.self) { ingredient in
+                    HStack {
+                        Button(action: { deleteIngredients(ingredient) }) {
+                            Image(systemName: "minus.circle.fill")
+                                .foregroundColor(.red)
+                        }
+                        Text(ingredient)
+                    }
+                }
+            }
+        }
+        .padding(20)
     }
     
     private func addIngredient(_ ingredient: String) {
@@ -144,3 +192,5 @@ struct IngredientsListView_Previews: PreviewProvider {
             .environmentObject(FavoritesManager())
     }
 }
+
+
