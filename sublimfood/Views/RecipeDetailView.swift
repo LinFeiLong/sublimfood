@@ -28,6 +28,8 @@ struct RecipeDetailView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 300)
+                    .frame(maxWidth: UIScreen.main.bounds.width)
+                    .clipped()
                 
                 VStack(spacing: 20) {
                     VStack {
@@ -41,8 +43,10 @@ struct RecipeDetailView: View {
                                        borderColor: .orange)
                         }
                         .animation(.default, value: 2)
+                        
                         ShareLinkBtnView()
                     }
+                    
                     Text("Ingrédients")
                         .font(.title)
                         .bold()
