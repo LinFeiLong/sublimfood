@@ -70,17 +70,17 @@ struct RecipeDetailView: View {
                     
                     Text("Préparation")
                         .font(.title)
-                        .bold()
-                    
+                        .fontWeight(.bold)
                     VStack(alignment: .leading, spacing: 20) {
                         ForEach(Array(recipe.steps.enumerated()), id: \.element) { index, step in
                             Text("ETAPE \(index + 1)")
                                 .frame(width: UIScreen.main.bounds.width - 30,alignment: .leading)
-                            
-                                .bold()
                                 .font(.title2)
+                                .fontWeight(.semibold)
                             Text(step)
                                 .frame(width:UIScreen.main.bounds.width - 30,alignment: .leading)
+                                .fontWeight(.light)
+                            Divider()
                         }
                     }
                     .padding()
