@@ -13,7 +13,7 @@
 This project was made during the [Simplon - Apple Foundation Program - iOS mobile development](https://simplon.co/formation/foundation/24) - Apple Foundation Program - iOS mobile development - june/july 2024.
 
 ## Description
-SublimFood is a simple app that allows you to find a recipe based on the ingredients you have on hand. It is a great way to save time and make cooking easier. It especially focuses on t upcycling, where you can transform your old ingredients into something new and delicious.
+SublimFood is a simple app that allows you to find a recipe based on the ingredients you have on hand. It is a great way to save time and make cooking easier. It especially focuses on upcycling, where you can transform your old ingredients into something new and delicious.
 
 ## Features
 - Search for recipes based on ingredients
