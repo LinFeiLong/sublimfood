@@ -1,6 +1,6 @@
 # SublimFood
 
-![SublimFood orange text](https://github.com/LinFeiLong/sublimfood/assets/6100043/b4d200f3-b24f-461e-b9aa-cc4b2c957515)
+<img src="https://github.com/LinFeiLong/sublimfood/assets/6100043/b4d200f3-b24f-461e-b9aa-cc4b2c957515" alt="SublimFood Logo" width="300">
 
 ## Team Members
 - [Tarek Noubli](https://github.com/Tarek-D)
@@ -36,4 +36,4 @@ SublimFood is a simple app that allows you to find a recipe based on the ingredi
 - [Kanban board](https://github.com/users/LinFeiLong/projects/2)
 
 ## Démo
-![SublimFood demo](./demo.gif)
+<img src="./demo.gif" alt="SublimFood demo" width="300">
