@@ -72,7 +72,7 @@ struct IngredientsListView: View {
                 .toolbar { toolbarContent }
                 .searchable(text: $searchText,
                             isPresented: $isSearchActive,
-                            placement: .navigationBarDrawer(displayMode: .always) ,
+                            placement: .navigationBarDrawer(displayMode: .always),
                             prompt: "Chercher un ingrédient" )
                 .onAppear {
                     // Customize search bar appearance
