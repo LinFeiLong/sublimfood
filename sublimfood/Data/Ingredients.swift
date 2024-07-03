@@ -30,6 +30,6 @@ struct Ingredients {
         "Bouillon",
         "Citron",
         "Herbes",
-        
+        "Fromage",
     ]
 }
