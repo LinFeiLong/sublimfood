@@ -5,7 +5,7 @@
 ## Team Members
 - [Tarek Noubli](https://github.com/Tarek-D)
 - [Sourinda Sivilay](https://github.com/Riindaa)
-- [Fernand LIME](https://github.com/LinFeiLong)
+- [Fernand Lime](https://github.com/LinFeiLong)
 - [Enzo Ribeiro](https://github.com/EnzoR-9)
 - [Imrane Aboudou](https://github.com/Imrane31)
 
