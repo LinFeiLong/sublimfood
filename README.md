@@ -32,3 +32,5 @@ SublimFood is a simple app that allows you to find a recipe based on the ingredi
 ## Canvas
 - [Slides](https://www.canva.com/design/DAGH69IKd_A/19gckDUgJFKXt-qp3xNuTg/view?utm_content=DAGH69IKd_A&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
+## Github
+- [Kanban board](https://github.com/users/LinFeiLong/projects/2)
