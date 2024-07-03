@@ -34,3 +34,6 @@ SublimFood is a simple app that allows you to find a recipe based on the ingredi
 
 ## Github
 - [Kanban board](https://github.com/users/LinFeiLong/projects/2)
+
+## Démo
+![SublimFood demo](./demo.gif)
