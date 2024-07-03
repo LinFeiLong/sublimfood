@@ -38,7 +38,7 @@ private struct CircleWithShadow: View {
         Circle()
             .frame(width: CIRCLE_SIZE, height: CIRCLE_SIZE)
             .foregroundColor(.white)
-            .shadow(radius: 5)
+            .shadow(radius: 2)
             .offset(x: 20)
     }
 }
