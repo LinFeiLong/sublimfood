@@ -38,7 +38,7 @@ struct RecipeCardView: View {
             }
         }
         .cornerRadius(25)
-        .shadow(radius: 5)
+        .shadow(radius: 2)
     }
 }
 

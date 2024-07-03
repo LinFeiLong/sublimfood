@@ -66,7 +66,7 @@ private struct IngredientButton: View {
         .frame(width: .infinity, height: BTN_HEIGHT)
         .background(.white)
         .cornerRadius(10)
-        .shadow(radius: 5)
+        .shadow(radius: 2)
     }
 }
 
