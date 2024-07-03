@@ -37,55 +37,69 @@ struct IngredientsListView: View {
                 if savedIngredients.isEmpty && !isSearchActive {
                     EmptyIngredientListView()
                 }
-                ScrollView(.vertical) {
-                    LazyVGrid(columns: columns, spacing: 20)  {
-                        if isSearchActive {
-                            ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
-                                if !savedIngredients.contains(ingredient) {
-                                    Button(action: { addIngredient(ingredient) },
-                                           label: {
+                ZStack(alignment: .bottom) {
+                    ScrollView(.vertical) {
+                        LazyVGrid(columns: columns, spacing: 20)  {
+                            if isSearchActive {
+                                ForEach(searchText.isEmpty ? ingredients : results, id: \.self) { ingredient in
+                                    if !savedIngredients.contains(ingredient) {
+                                        Button(action: { addIngredient(ingredient) },
+                                               label: {
+                                            IngredientButtonView(
+                                                imageName: ingredient.lowercased(),
+                                                label: ingredient,
+                                                variant: .add
+                                            )
+                                        })
+                                    }
+                                }
+                            }
+                            else {
+                                ForEach(savedIngredients, id: \.self) { ingredient in
+                                    NavigationLink {
+                                        RecipesListView(ingredient: ingredient)
+                                    } label: {
                                         IngredientButtonView(
                                             imageName: ingredient.lowercased(),
                                             label: ingredient,
-                                            variant: .add
+                                            variant: .navigation
                                         )
-                                    })
+                                    }
                                 }
                             }
-                        }
-                        else {
-                            ForEach(savedIngredients, id: \.self) { ingredient in
-                                NavigationLink {
-                                    RecipesListView(ingredient: ingredient)
-                                } label: {
-                                    IngredientButtonView(
-                                        imageName: ingredient.lowercased(),
-                                        label: ingredient,
-                                        variant: .navigation
-                                    )
-                                }
-                            }
-                        }
-                    }.padding()
-                }
-                .navigationTitle("Ingrédients")
-                .toolbar { toolbarContent }
-                .searchable(text: $searchText,
-                            isPresented: $isSearchActive,
-                            placement: .navigationBarDrawer(displayMode: .always),
-                            prompt: "Chercher un ingrédient" )
-                .onAppear {
-                    // Customize search bar appearance
-                    if let searchTextField = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]) as? UITextField {
-                        searchTextField.attributedPlaceholder = NSAttributedString(
-                            string: "Chercher un ingrédient",
-                            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-                        )
-                        searchTextField.textColor = UIColor.white
+                        }.padding()
                     }
-                    UISearchBar.appearance().barTintColor = UIColor.white
-                    UISearchBar.appearance().tintColor = UIColor.white
-                    UISearchBar.appearance().setImage(searchBarImage(), for: .search, state: .normal)
+                    .navigationTitle("Ingrédients")
+                    .toolbar { toolbarContent }
+                    .searchable(text: $searchText,
+                                isPresented: $isSearchActive,
+                                placement: .navigationBarDrawer(displayMode: .always),
+                                prompt: "Chercher un ingrédient" )
+                    .onAppear {
+                        // Customize search bar appearance
+                        if let searchTextField = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]) as? UITextField {
+                            searchTextField.attributedPlaceholder = NSAttributedString(
+                                string: "Chercher un ingrédient",
+                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+                            )
+                            searchTextField.textColor = UIColor.white
+                        }
+                        UISearchBar.appearance().barTintColor = UIColor.white
+                        UISearchBar.appearance().tintColor = UIColor.white
+                        UISearchBar.appearance().setImage(searchBarImage(), for: .search, state: .normal)
+                }
+                    if isSearchActive {
+                        Button(action: {
+                            isSearchActive = false
+                        }, label: {
+                            ButtonView(label: "J'ai terminé",
+                                       icon: "checkmark",
+                                       fontColor: .orange,
+                                       color: .white,
+                                       borderColor: .orange)
+                        })
+                        .fontWeight(.black)
+                    }
                 }
             }
             .sheet(isPresented: $sheetIsPresented) { editIngredientsSheet }
@@ -108,15 +122,22 @@ struct IngredientsListView: View {
     
     private var editIngredientsSheet: some View {
         VStack {
-            Button(action: { sheetIsPresented = false }) {
-                Image(systemName: "checkmark")
-                    .font(.largeTitle)
-                    .foregroundColor(.orange)
+            Button(action: {
+                sheetIsPresented = false
+            }) {
+                ButtonView(label: "J'ai terminé",
+                           icon: "checkmark",
+                           fontColor: .orange,
+                           color: .white,
+                           borderColor: .orange)
             }
+            .fontWeight(.black)
             List {
                 ForEach(savedIngredients, id: \.self) { ingredient in
                     HStack {
-                        Button(action: { deleteIngredients(ingredient) }) {
+                        Button(action: {
+                            deleteIngredients(ingredient)
+                        }) {
                             Image(systemName: "minus.circle.fill")
                                 .foregroundColor(.red)
                         }
