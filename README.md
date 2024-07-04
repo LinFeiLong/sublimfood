@@ -37,6 +37,6 @@ SublimFood is a simple app that allows you to find a recipe based on the ingredi
 
 ## Démo
 - [Try it on TestFlight](https://testflight.apple.com/join/ToZIV3lB)
-- [Try it on Appetize.io](https://appetize.io/app/kwjmctse6t2qn7qgjzaapmsipy?device=iphone15pro&osVersion=17.2)
+- [Try it on Appetize.io](https://appetize.io/app/b_wyu676qxbrxcjuaijfnz4bwpay)
 
 <img src="./demo.gif" alt="SublimFood demo" width="300">
